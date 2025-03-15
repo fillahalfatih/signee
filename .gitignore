@@ -1,0 +1,20 @@
+# Mengabaikan folder virtual environment
+venv/
+
+# Mengabaikan file dan folder lain yang tidak perlu di commit
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Mengabaikan file konfigurasi editor
+.vscode/
+.idea/
+
+# Mengabaikan file database SQLite
+*.sqlite3
+
+# Mengabaikan file log dan cache
+logs/
+*.log
+cache/
