@@ -9,7 +9,7 @@ import sklearn
 app = Flask(__name__)
 
 # Load model dari file .p
-model_dict = pickle.load(open('./model.p', 'rb'))
+model_dict = pickle.load(open('model/rf_model.p', 'rb'))
 model = model_dict['model']
 
 # Definisikan labels_dict untuk mapping label numerik ke huruf
