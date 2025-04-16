@@ -24,6 +24,10 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 def index():
     return render_template('index.html')
 
+@app.route('/learn')
+def learn():
+    return render_template('learn.html')
+
 @app.route('/about')
 def about():
     return render_template('about.html')
