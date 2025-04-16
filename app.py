@@ -24,6 +24,30 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 def index():
     return render_template('index.html')
 
+@app.route('/pengantar')
+def pengantar():
+    return render_template(
+        'pengantar.html',
+        title = 'Pengantar | Signee',
+        active = 'pengantar'
+    )
+    
+@app.route('/alfabet')
+def alfabet():
+    return render_template(
+        'alfabet.html',
+        title = 'Alfabet A-Z | Signee',
+        active = 'alfabet'
+    )
+    
+@app.route('/tips-trik', endpoint='tips-trik')
+def tips_trik():
+    return render_template(
+        'tips-trik.html',
+        title = 'Tips & Trik | Signee',
+        active = 'tips-trik'
+    )
+
 @app.route('/about')
 def about():
     return render_template('about.html')
