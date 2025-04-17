@@ -22,7 +22,10 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template(
+        'index.html',
+        title = 'Signee',
+        active = 'beranda')
 
 @app.route('/pengantar')
 def pengantar():
@@ -46,6 +49,38 @@ def tips_trik():
         'tips-trik.html',
         title = 'Tips & Trik | Signee',
         active = 'tips-trik'
+    )
+
+@app.route('/kuis-awal', endpoint='kuis-awal')
+def kuis_awal():
+    return render_template(
+        'kuis-awal.html',
+        title = 'Kuis Awal | Signee',
+        active = 'kuis-awal'
+    )
+
+@app.route('/kuis-akhir', endpoint='kuis-akhir')
+def kuis_akhir():
+    return render_template(
+        'kuis-akhir.html',
+        title = 'Kuis Akhir | Signee',
+        active = 'kuis-akhir'
+    )
+    
+@app.route('/kuis-interaktif', endpoint='kuis-interaktif')
+def kuis_interaktif():
+    return render_template(
+        'kuis-interaktif.html',
+        title = 'Kuis Interaktif | Signee',
+        active = 'kuis-interaktif'
+    )
+
+@app.route('/skor')
+def skor():
+    return render_template(
+        'skor.html',
+        title = 'Skor & Progress | Signee',
+        active = 'skor'
     )
 
 @app.route('/about')
