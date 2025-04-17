@@ -44,6 +44,20 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ url_for('static', filename='assets/js/config.js') }}"></script>
+
+    {% if active == 'beranda' %}
+    <style>
+      .menu-link.menu-toggle.belajar,
+      .menu-link.menu-toggle.latihan {
+        background-color: transparent !important;
+      }
+
+      .menu-link.menu-toggle.belajar:hover,
+      .menu-link.menu-toggle.latihan:hover {
+        background-color: rgba(67, 89, 113, 0.04) !important;
+      }
+    </style>
+    {% endif %}
   </head>
 
   <body>
@@ -114,16 +128,16 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item {% if active == 'beranda' %} active {% endif %}">
+              <a href="{{ url_for('index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Basic">Beranda</div>
               </a>
             </li>
             <!-- Dashboards -->
-            <li class="menu-item {% if active == 'pengantar' or active == 'alfabet' or active == 'tips-trik' %}active open{% endif %}">
+            <li class="menu-item {% if active == 'pengantar' or active == 'alfabet' or active == 'tips-trik' %}active open{% endif %} {% if active == 'beranda' %} open {% endif %}">
             <!-- <li class="menu-item active open"> -->
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <a href="javascript:void(0);" class="menu-link menu-toggle belajar">
                 <i class="menu-icon tf-icons bx bx-book-content"></i>
                 <div data-i18n="Dashboards">Belajar</div>
                 <!-- <div class="badge bg-danger rounded-pill ms-auto">5</div> -->
@@ -148,30 +162,30 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <li class="menu-item {% if active == 'kuis-awal' or active == 'kuis-akhir' or active == 'kuis-interaktif' or active == 'skor' %}active open{% endif %} {% if active == 'beranda' %} open {% endif %}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle latihan">
                 <i class="menu-icon tf-icons bx bx-edit"></i>
                 <div data-i18n="Layouts">Latihan</div>
               </a>
 
               <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
+                <li class="menu-item {% if active == 'kuis-awal' %} active {% endif %}">
+                  <a href="{{ url_for('kuis-awal') }}" class="menu-link">
                     <div data-i18n="Without menu">Kuis Huruf Awal (A-M)</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
+                <li class="menu-item {% if active == 'kuis-akhir' %} active {% endif %}">
+                  <a href="{{ url_for('kuis-akhir') }}" class="menu-link">
                     <div data-i18n="Without navbar">Kuis Huruf Lanjut (N-Z)</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
+                <li class="menu-item {% if active == 'kuis-interaktif' %} active {% endif %}">
+                  <a href="{{ url_for('kuis-interaktif') }}" class="menu-link">
                     <div data-i18n="Without navbar">Kuis Interaktif</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
+                <li class="menu-item {% if active == 'skor' %} active {% endif %}">
+                  <a href="{{ url_for('skor') }}" class="menu-link">
                     <div data-i18n="Without navbar">Skor & Progress</div>
                   </a>
                 </li>
