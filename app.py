@@ -82,10 +82,30 @@ def skor():
         title = 'Skor & Progress | Signee',
         active = 'skor'
     )
+    
+@app.route('/kamus-isyarat', endpoint='kamus-isyarat')
+def kamus_isyarat():
+    return render_template(
+        'kamus-isyarat.html',
+        title = 'Kamus Isyarat | Signee',
+        active = 'kamus-isyarat'
+    )
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/tentang')
+def tentang():
+    return render_template(
+        'tentang.html',
+        title = 'Tentang | Signee',
+        active = 'tentang'
+    )
+    
+@app.route('/saran-masukan', endpoint='saran-masukan')
+def saran_masukan():
+    return render_template(
+        'saran-masukan.html',
+        title = 'Saran & Masukan | Signee',
+        active = 'saran-masukan'
+    )
 
 @app.route('/predict', methods=['POST'])
 def predict():
