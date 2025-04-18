@@ -186,27 +186,27 @@
                 </li>
                 <li class="menu-item {% if active == 'skor' %} active {% endif %}">
                   <a href="{{ url_for('skor') }}" class="menu-link">
-                    <div data-i18n="Without navbar">Skor & Progress</div>
+                    <div data-i18n="Skor & Progress">Skor & Progress</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item {% if active == 'kamus-isyarat' %} active {% endif %}">
+              <a href="{{ url_for('kamus-isyarat') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Kamus Isyarat</div>
+                <div data-i18n="Kamus Isyarat">Kamus Isyarat</div>
               </a>
             </li>
-            <li class="menu-item mt-auto">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item mt-auto {% if active == 'tentang' %} active {% endif %}">
+              <a href="{{ url_for('tentang') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
-                <div data-i18n="Basic">Tentang</div>
+                <div data-i18n="Tentang">Tentang</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item {% if active == 'saran-masukan' %} active {% endif %}">
+              <a href="{{ url_for('saran-masukan') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-support"></i>
-                <div data-i18n="Basic">Saran & Masukan</div>
+                <div data-i18n="Saran & Masukan">Saran & Masukan</div>
               </a>
             </li>
           </ul>
