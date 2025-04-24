@@ -13,16 +13,33 @@
                         <div class="d-flex justify-content-between gap-4">                            
                             <div class="flex-grow-1">
                                 <h4 class="card-title my-4">Huruf apa yang ada pada gambar disamping?</h4>
-
-                                <div class="mb-3">
-                                    <button class="btn btn-primary" id="start-camera">Mulai Kamera</button>
-                                    <button id="stop-camera" class="btn btn-danger" disabled>Matikan Kamera</button>
-                                    <button id="capture" class="btn btn-success mt-2" onclick="capture()" disabled>Ambil Gambar</button>
-                                </div>
-                                <video id="webcam" width="640" height="480" autoplay style="display:none; border-radius: 8px !important;" class="mb-2"></video>
-                                <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-                                <p id="prediction-result">Prediksi akan muncul di sini...</p>
-                                <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        
+                                <form id="quiz-form">
+                                    <div class="form-check mb-2 option-wrapper">
+                                        <input class="form-check-input" type="radio" name="answer" id="option1" value="A">
+                                        <label class="form-check-label option-card" for="option1">
+                                            Pilihan A
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2 option-wrapper">
+                                        <input class="form-check-input" type="radio" name="answer" id="option2" value="B">
+                                        <label class="form-check-label option-card" for="option2">
+                                            Pilihan B
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2 option-wrapper">
+                                        <input class="form-check-input" type="radio" name="answer" id="option3" value="C">
+                                        <label class="form-check-label option-card" for="option3">
+                                            Pilihan C
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-4 option-wrapper">
+                                        <input class="form-check-input" type="radio" name="answer" id="option4" value="D">
+                                        <label class="form-check-label option-card" for="option4">
+                                            Pilihan D
+                                        </label>
+                                    </div>
+                                </form>
 
                                 <!-- Tombol navigasi -->
                                 <div class="d-flex gap-2">

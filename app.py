@@ -51,20 +51,12 @@ def tips_trik():
         active = 'tips-trik'
     )
 
-@app.route('/kuis-awal', endpoint='kuis-awal')
-def kuis_awal():
+@app.route('/kuis-pilihan-ganda', endpoint='kuis-pilihan-ganda')
+def kuis_pilihan_ganda():
     return render_template(
-        'kuis-awal.html',
-        title = 'Kuis Awal',
-        active = 'kuis-awal'
-    )
-
-@app.route('/kuis-akhir', endpoint='kuis-akhir')
-def kuis_akhir():
-    return render_template(
-        'kuis-akhir.html',
-        title = 'Kuis Akhir',
-        active = 'kuis-akhir'
+        'kuis-pilihan-ganda.html',
+        title = 'Kuis Pilihan Ganda',
+        active = 'kuis-pilihan-ganda'
     )
     
 @app.route('/kuis-interaktif', endpoint='kuis-interaktif')
