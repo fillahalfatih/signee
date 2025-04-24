@@ -59,3 +59,18 @@ function capture() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+const startBtn = document.getElementById('start-camera');
+const stopBtn = document.getElementById('stop-camera');
+const webcam = document.getElementById('webcam');
+const previewImg = document.getElementById('preview-image');
+
+startBtn.addEventListener('click', function() {
+    previewImg.style.display = 'none';
+    webcam.style.display = '';
+});
+
+stopBtn.addEventListener('click', function() {
+    previewImg.style.display = '';
+    webcam.style.display = 'none';
+});

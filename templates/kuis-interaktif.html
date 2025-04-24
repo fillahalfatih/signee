@@ -12,18 +12,9 @@
 
                         <div class="d-flex justify-content-between gap-4">                            
                             <div class="flex-grow-1">
-                                <h4 class="card-title my-4">Huruf apa yang ada pada gambar disamping?</h4>
-
-                                <div class="mb-3">
-                                    <button class="btn btn-primary" id="start-camera">Mulai Kamera</button>
-                                    <button id="stop-camera" class="btn btn-danger" disabled>Matikan Kamera</button>
-                                    <button id="capture" class="btn btn-success mt-2" onclick="capture()" disabled>Ambil Gambar</button>
-                                </div>
-                                <video id="webcam" width="640" height="480" autoplay style="display:none; border-radius: 8px !important;" class="mb-2"></video>
-                                <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-                                <p id="prediction-result">Prediksi akan muncul di sini...</p>
-                                <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
+                                <h4 class="card-title my-4 lh-lg">Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf</h4>
+                                <p class="mb-4 rounded" style="font-size: 128px; width: 200px; color: #b6bcc3; border: 2px solid #dee2e6; text-align: center;">A</p>
+                                <!-- <p id="prediction-result">Prediksi akan muncul di sini...</p> -->
                                 <!-- Tombol navigasi -->
                                 <div class="d-flex gap-2">
                                     <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
@@ -83,8 +74,20 @@
                                     }
                                 </style>
                             </div>
-                            <div style="width: 350px !important;" class="mb-4 order-0">
-                                <img src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}" alt="" width="100%" style="object-fit: cover; border-radius: 8px !important; aspect-ratio: 1/1;">
+                            <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0">
+                                <div class="mb-4">
+                                    <button id="capture" class="btn btn-success mt-2 w-100" onclick="capture()" disabled>Ambil Gambar</button>
+                                    <div class="d-flex gap-2 mt-2">
+                                        <button class="btn btn-primary w-50" id="start-camera">Mulai Kamera</button>
+                                        <button class="btn btn-danger w-50" id="stop-camera" disabled>Matikan Kamera</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img class="mb-2" id="preview-image" src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}" alt="" style="width: 400px; height: 300px; object-fit: cover; border-radius: 8px !important;">
+                                    <video id="webcam" width="400px" height="300px" autoplay style="display:none; border-radius: 8px !important; object-fit: cover;" class="mb-2"></video>
+                                    <canvas id="canvas" width="350px" style="display:none;"></canvas>
+                                    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+                                </div>
                             </div>
                         </div>
                     </div>
