@@ -24,14 +24,14 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 def index():
     return render_template(
         'index.html',
-        title = 'Signee',
+        title = 'Beranda',
         active = 'beranda')
 
 @app.route('/pengantar')
 def pengantar():
     return render_template(
         'pengantar.html',
-        title = 'Pengantar | Signee',
+        title = 'Pengantar',
         active = 'pengantar'
     )
     
@@ -39,7 +39,7 @@ def pengantar():
 def alfabet():
     return render_template(
         'alfabet.html',
-        title = 'Alfabet A-Z | Signee',
+        title = 'Alfabet A-Z',
         active = 'alfabet'
     )
     
@@ -47,7 +47,7 @@ def alfabet():
 def tips_trik():
     return render_template(
         'tips-trik.html',
-        title = 'Tips & Trik | Signee',
+        title = 'Tips & Trik',
         active = 'tips-trik'
     )
 
@@ -55,7 +55,7 @@ def tips_trik():
 def kuis_awal():
     return render_template(
         'kuis-awal.html',
-        title = 'Kuis Awal | Signee',
+        title = 'Kuis Awal',
         active = 'kuis-awal'
     )
 
@@ -63,7 +63,7 @@ def kuis_awal():
 def kuis_akhir():
     return render_template(
         'kuis-akhir.html',
-        title = 'Kuis Akhir | Signee',
+        title = 'Kuis Akhir',
         active = 'kuis-akhir'
     )
     
@@ -71,7 +71,7 @@ def kuis_akhir():
 def kuis_interaktif():
     return render_template(
         'kuis-interaktif.html',
-        title = 'Kuis Interaktif | Signee',
+        title = 'Kuis Interaktif',
         active = 'kuis-interaktif'
     )
 
@@ -79,7 +79,7 @@ def kuis_interaktif():
 def skor():
     return render_template(
         'skor.html',
-        title = 'Skor & Progress | Signee',
+        title = 'Skor & Progress',
         active = 'skor'
     )
     
@@ -87,7 +87,7 @@ def skor():
 def kamus_isyarat():
     return render_template(
         'kamus-isyarat.html',
-        title = 'Kamus Isyarat | Signee',
+        title = 'Kamus Isyarat',
         active = 'kamus-isyarat'
     )
 
@@ -95,7 +95,7 @@ def kamus_isyarat():
 def tentang():
     return render_template(
         'tentang.html',
-        title = 'Tentang | Signee',
+        title = 'Tentang',
         active = 'tentang'
     )
     
@@ -103,7 +103,7 @@ def tentang():
 def saran_masukan():
     return render_template(
         'saran-masukan.html',
-        title = 'Saran & Masukan | Signee',
+        title = 'Saran & Masukan',
         active = 'saran-masukan'
     )
 
