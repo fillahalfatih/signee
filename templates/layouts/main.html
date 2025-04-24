@@ -44,7 +44,8 @@
     <script src="{{ url_for('static', filename='assets/js/config.js') }}"></script>
 
     <style>
-        .bg-menu-theme .menu-inner > .menu-item.active:before {
+        .bg-menu-theme .menu-inner > .menu-item.active:before,
+        .badge.text-bg-primary {  
             background: #3368C4 !important;
         }
 
@@ -133,20 +134,15 @@
                     </li>
 
                     <!-- Layouts -->
-                    <li class="menu-item {% if active == 'kuis-awal' or active == 'kuis-akhir' or active == 'kuis-interaktif' or active == 'skor' %}active open{% endif %} {% if active == 'beranda' %} open {% endif %}">
+                    <li class="menu-item {% if active == 'kuis-pilihan-ganda' or active == 'kuis-akhir' or active == 'kuis-interaktif' or active == 'skor' %}active open{% endif %} {% if active == 'beranda' %} open {% endif %}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle latihan">
                             <i class="menu-icon tf-icons bx bx-edit"></i>
                             <div data-i18n="Layouts">Latihan</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item {% if active == 'kuis-awal' %} active {% endif %}">
-                                <a href="{{ url_for('kuis-awal') }}" class="menu-link">
-                                    <div data-i18n="Without menu">Kuis Huruf Awal (A-M)</div>
-                                </a>
-                            </li>
-                            <li class="menu-item {% if active == 'kuis-akhir' %} active {% endif %}">
-                                <a href="{{ url_for('kuis-akhir') }}" class="menu-link">
-                                    <div data-i18n="Without navbar">Kuis Huruf Lanjut (N-Z)</div>
+                            <li class="menu-item {% if active == 'kuis-pilihan-ganda' %} active {% endif %}">
+                                <a href="{{ url_for('kuis-pilihan-ganda') }}" class="menu-link">
+                                    <div data-i18n="Without menu">Kuis Pilihan Ganda</div>
                                 </a>
                             </li>
                             <li class="menu-item {% if active == 'kuis-interaktif' %} active {% endif %}">
