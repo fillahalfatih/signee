@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, abort
 import base64
 import cv2
 import numpy as np
 import mediapipe as mp
 import pickle
 import sklearn
+import json
 
 app = Flask(__name__)
 
@@ -54,9 +55,33 @@ def tips_trik():
 @app.route('/kuis-pilihan-ganda', endpoint='kuis-pilihan-ganda')
 def kuis_pilihan_ganda():
     return render_template(
-        'kuis-pilihan-ganda.html',
+        'kuis-onboarding.html',
         title = 'Kuis Pilihan Ganda',
         active = 'kuis-pilihan-ganda'
+    )
+    
+# Route untuk tiap kuis berdasarkan id
+@app.route('/kuis-pilihan-ganda/<int:kuis_id>')
+def kuis_pilihan_ganda_detail(kuis_id):
+    # Load data dari JSON
+    try:
+        with open('data-pg.json') as f:
+            kuis_data = json.load(f)
+    except FileNotFoundError:
+        abort(404, description="Data tidak ditemukan")
+    
+    # Cari kuis berdasarkan id
+    kuis = next((item for item in kuis_data if item["id"] == kuis_id), None)
+    
+    if kuis is None:
+        abort(404, description="Kuis tidak ditemukan")
+    
+    return render_template(
+        'kuis-pilihan-ganda.html',  # ini file HTML buat detail kuisnya bro
+        title = f'Kuis Pilihan Ganda',
+        active = 'kuis-pilihan-ganda',
+        # title=f'Kuis {kuis_id}',
+        kuis = kuis
     )
     
 @app.route('/kuis-interaktif', endpoint='kuis-interaktif')

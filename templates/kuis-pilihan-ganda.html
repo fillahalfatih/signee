@@ -8,41 +8,26 @@
             <div class="col-lg-12 mb-4 order-0">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge text-bg-primary">Soal 1</span>
+                        <span class="badge text-bg-primary">Soal {{ kuis.id }}</span>
 
                         <div class="d-flex justify-content-between gap-4">                            
                             <div class="flex-grow-1">
-                                <h4 class="card-title my-4 lh-lg">Huruf apa yang ada pada gambar disamping?</h4>
-        
+                                <!-- <h4 class="card-title my-4 lh-lg">Huruf apa yang ada pada gambar disamping?</h4> -->
+                                <h4 class="card-title my-4 lh-lg">{{ kuis.soal }}</h4>
+
                                 <form id="quiz-form">
-                                    <div class="form-check mb-2 option-wrapper">
-                                        <input class="form-check-input" type="radio" name="answer" id="option1" value="A">
-                                        <label class="form-check-label option-card" for="option1">
-                                            Pilihan A
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2 option-wrapper">
-                                        <input class="form-check-input" type="radio" name="answer" id="option2" value="B">
-                                        <label class="form-check-label option-card" for="option2">
-                                            Pilihan B
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2 option-wrapper">
-                                        <input class="form-check-input" type="radio" name="answer" id="option3" value="C">
-                                        <label class="form-check-label option-card" for="option3">
-                                            Pilihan C
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-4 option-wrapper">
-                                        <input class="form-check-input" type="radio" name="answer" id="option4" value="D">
-                                        <label class="form-check-label option-card" for="option4">
-                                            Pilihan D
-                                        </label>
-                                    </div>
+                                    {% for huruf, isi_opsi in kuis.opsi.items() %}
+                                        <div class="form-check mb-2 option-wrapper">
+                                            <input class="form-check-input" type="radio" name="answer" id="option{{ huruf }}" value="{{ isi_opsi }}">
+                                            <label class="form-check-label option-card" for="option{{ huruf }}">
+                                                Huruf {{ isi_opsi }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
                                 </form>
 
                                 <!-- Tombol navigasi -->
-                                <div class="d-flex gap-2">
+                                <div class="d-flex gap-2 mt-4">
                                     <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
                                     <button type="button" class="btn btn-secondary" id="next-btn">Next</button>
                                 </div>
@@ -101,7 +86,7 @@
                                 </style>
                             </div>
                             <div style="max-width: 400px !important;" class="mb-4 order-0">
-                                <img src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}" alt="" width="100%" style="object-fit: cover; border-radius: 8px !important; aspect-ratio: 1/1;">
+                                <img src="{{ url_for('static', filename=kuis.gambar) }}" alt="" width="100%" style="object-fit: cover; border-radius: 8px !important; aspect-ratio: 1/1;">
                             </div>
                         </div>
                     </div>

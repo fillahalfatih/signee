@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/18.jpg",
+        "opsi": {
+            "A": "A",
+            "B": "D",
+            "C": "G",
+            "D": "K"
+        },
+        "jawaban": "K"
+    },
+    
+    {
+        "id": 2,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/18.jpg",
+        "opsi": {
+            "A": "B",
+            "B": "J",
+            "C": "K",
+            "D": "P"
+        },
+        "jawaban": "G"
+    },
+    {
+        "id": 3,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/20.jpg",
+        "opsi": {
+            "A": "A",
+            "B": "D",
+            "C": "G",
+            "D": "K"
+        },
+        "jawaban": "A"
+    }
+]
