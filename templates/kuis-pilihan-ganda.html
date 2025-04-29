@@ -17,73 +17,28 @@
 
                                 <form id="quiz-form">
                                     {% for huruf, isi_opsi in kuis.opsi.items() %}
-                                        <div class="form-check mb-2 option-wrapper">
+                                        <div class="form-check mb-3 option-wrapper">
                                             <input class="form-check-input" type="radio" name="answer" id="option{{ huruf }}" value="{{ isi_opsi }}">
                                             <label class="form-check-label option-card" for="option{{ huruf }}">
                                                 Huruf {{ isi_opsi }}
                                             </label>
                                         </div>
+
+                                        <!-- {% if kuis.jawaban == isi_opsi %}
+                                            <p class="text-success">Jawaban yang benar</p>
+                                        {% else %}
+                                            <p class="text-danger">Jawaban yang salah</p>
+                                        {% endif %} -->
+
                                     {% endfor %}
                                 </form>
 
                                 <!-- Tombol navigasi -->
                                 <div class="d-flex gap-2 mt-4">
                                     <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
-                                    <button type="button" class="btn btn-secondary" id="next-btn">Next</button>
+                                    <button type="button" class="btn btn-secondary" id="next-btn" data-id="{{ kuis.id }}">Next</button>
+                                    <!-- <button type="button" class="btn btn-secondary" id="next-btn">Next</button> -->
                                 </div>
-                                
-                                <style>
-                                    /* Wrapper untuk membuat radio dan label sejajar */
-                                    .option-wrapper {
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 12px;
-                                    }
-
-                                    /* Basic card style */
-                                    .option-card {
-                                        border: 2px solid #dee2e6;
-                                        border-radius: 8px;
-                                        padding: 12px 16px;
-                                        transition: border-color 0.2s, background-color 0.2s;
-                                        cursor: pointer;
-                                        background: #fff;
-                                        flex: 1;
-                                        user-select: none;
-                                        transform: translateX(-3%);
-                                        margin-left: 0px; /* atau pakai nilai yang sama dengan lebar radio button + jarak */
-                                        padding-left: 25px !important;
-                                    }
-
-                                    /* Margin antara pilihan */
-                                    .option-wrapper:not(:last-child) {
-                                        margin-bottom: 12px;
-                                    }
-
-                                    /* Highlight pilihan yang dipilih */
-                                    input[type="radio"]:checked + .option-card {
-                                        border-color: #3368C4 !important;
-                                        background-color: #a0bbec30 !important;
-                                        color: #3368C4 !important;
-                                    }
-
-                                    /* Style ketika radio fokus */
-                                    input[type="radio"]:focus + .option-card {
-                                        border-color: #3368C4 !important;
-                                        outline: none;
-                                    }
-
-                                    .form-check-input:checked, .form-check-input[type=checkbox]:indeterminate {
-                                        background-color: #3368C4 !important;
-                                        border-color: #3368C4 !important;
-                                        box-shadow: 0 2px 4px 0 rgba(13, 110, 253, 0.4);
-                                        /* box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4); */
-                                    }
-
-                                    .form-check-input[type=radio] {
-                                        z-index: 999;
-                                    }
-                                </style>
                             </div>
                             <div style="max-width: 400px !important;" class="mb-4 order-0">
                                 <img src="{{ url_for('static', filename=kuis.gambar) }}" alt="" width="100%" style="object-fit: cover; border-radius: 8px !important; aspect-ratio: 1/1;">
@@ -97,5 +52,45 @@
     <!-- / Content -->
     <div class="content-backdrop fade"></div>
 </div>
+
+<script>
+document.getElementById('next-btn').addEventListener('click', function () {
+    const selected = document.querySelector('input[name="answer"]:checked');
+    const soalId = this.dataset.id;
+    const jawabanBenar = "{{ kuis.jawaban }}"; // Ambil jawaban benar dari server
+
+    if (!selected) {
+        alert('Pilih jawaban dulu, bro!');
+        return;
+    }
+
+    const opsiDipilih = selected.value;
+
+    fetch('/submit-jawaban-pg', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: parseInt(soalId),
+            opsi_dipilih: opsiDipilih,
+            jawaban_benar: jawabanBenar
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'ok') {
+            window.location.href = `/kuis-pilihan-ganda/${parseInt(soalId) + 1}`;
+        } else {
+            alert('Gagal menyimpan jawaban!');
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert('Terjadi error!');
+    });
+});
+</script>
+
 <!-- Content wrapper -->
 {% endblock content %}
