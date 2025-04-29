@@ -43,27 +43,7 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ url_for('static', filename='assets/js/config.js') }}"></script>
 
-    <style>
-        .bg-menu-theme .menu-inner > .menu-item.active:before,
-        .badge.text-bg-primary {  
-            background: #3368C4 !important;
-        }
-
-        .bg-menu-theme .menu-inner > .menu-item.active > .menu-link {
-            color: #3368C4 !important;
-            background-color: #a0bbec30 !important;
-        }
-
-        .bg-menu-theme .menu-sub > .menu-item.active > .menu-link:not(.menu-toggle):before {
-            background-color: #3368C4 !important;
-            border: 3px solid #e7e7ff !important;
-        }
-
-        .app-brand .layout-menu-toggle {
-            background-color: #3368C4 !important;
-            border: 7px solid #f5f5f9;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 
     {% if active == 'beranda' %}
     <style>
@@ -192,20 +172,6 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <!--
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input
-                                    type="text"
-                                    class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                                    placeholder="Search..."
-                                    aria-label="Search..." />
-                            </div>
-                        </div>
-                        -->
-                        <!-- /Search -->
                         <h6 class="card-title m-0">{{ title }}</h6>
                     </div>
                 </nav>

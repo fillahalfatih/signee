@@ -5,22 +5,21 @@
         "gambar": "assets/img/backgrounds/18.jpg",
         "opsi": {
             "A": "A",
-            "B": "D",
-            "C": "G",
-            "D": "K"
+            "B": "B",
+            "C": "C",
+            "D": "D"
         },
-        "jawaban": "K"
+        "jawaban": "B"
     },
-    
     {
         "id": 2,
         "soal": "Huruf apa yang ada pada gambar disamping?",
-        "gambar": "assets/img/backgrounds/18.jpg",
+        "gambar": "assets/img/backgrounds/19.jpg",
         "opsi": {
-            "A": "B",
-            "B": "J",
-            "C": "K",
-            "D": "P"
+            "A": "E",
+            "B": "F",
+            "C": "G",
+            "D": "H"
         },
         "jawaban": "G"
     },
@@ -29,11 +28,95 @@
         "soal": "Huruf apa yang ada pada gambar disamping?",
         "gambar": "assets/img/backgrounds/20.jpg",
         "opsi": {
-            "A": "A",
-            "B": "D",
-            "C": "G",
-            "D": "K"
+            "A": "I",
+            "B": "J",
+            "C": "K",
+            "D": "L"
         },
-        "jawaban": "A"
+        "jawaban": "K"
+    },
+    {
+        "id": 4,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/21.jpg",
+        "opsi": {
+            "A": "M",
+            "B": "N",
+            "C": "O",
+            "D": "P"
+        },
+        "jawaban": "N"
+    },
+    {
+        "id": 5,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/22.jpg",
+        "opsi": {
+            "A": "Q",
+            "B": "R",
+            "C": "S",
+            "D": "T"
+        },
+        "jawaban": "R"
+    },
+    {
+        "id": 6,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/23.jpg",
+        "opsi": {
+            "A": "U",
+            "B": "V",
+            "C": "W",
+            "D": "X"
+        },
+        "jawaban": "V"
+    },
+    {
+        "id": 7,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/24.jpg",
+        "opsi": {
+            "A": "Y",
+            "B": "Z",
+            "C": "A",
+            "D": "B"
+        },
+        "jawaban": "Z"
+    },
+    {
+        "id": 8,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/25.jpg",
+        "opsi": {
+            "A": "C",
+            "B": "D",
+            "C": "E",
+            "D": "F"
+        },
+        "jawaban": "E"
+    },
+    {
+        "id": 9,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/26.jpg",
+        "opsi": {
+            "A": "L",
+            "B": "M",
+            "C": "O",
+            "D": "Q"
+        },
+        "jawaban": "O"
+    },
+    {
+        "id": 10,
+        "soal": "Huruf apa yang ada pada gambar disamping?",
+        "gambar": "assets/img/backgrounds/27.jpg",
+        "opsi": {
+            "A": "S",
+            "B": "T",
+            "C": "U",
+            "D": "Y"
+        },
+        "jawaban": "Y"
     }
 ]

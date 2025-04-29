@@ -6,6 +6,7 @@ import mediapipe as mp
 import pickle
 import sklearn
 import json
+import os
 
 app = Flask(__name__)
 
@@ -170,6 +171,38 @@ def predict():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/submit-jawaban-pg', methods=['POST'])
+def submit_jawaban():
+    data = request.get_json()
+    jawaban_baru = {
+        "id": data['id'],
+        "opsi_dipilih": data['opsi_dipilih'],
+        "jawaban_benar": data['jawaban_benar'],
+        "isTrue": 1 if data['opsi_dipilih'] == data['jawaban_benar'] else 0
+    }
+
+    path = 'data-pg-jawaban.json'
+
+    # Cek kalau file belum ada
+    if not os.path.exists(path):
+        jawaban_list = []
+    else:
+        with open(path, 'r') as f:
+            try:
+                jawaban_list = json.load(f)
+            except json.JSONDecodeError:
+                jawaban_list = []
+
+    # Hapus jawaban lama jika udah ada id yang sama (overwrite)
+    jawaban_list = [j for j in jawaban_list if j['id'] != data['id']]
+    jawaban_list.append(jawaban_baru)
+
+    # Simpan kembali
+    with open(path, 'w') as f:
+        json.dump(jawaban_list, f, indent=4)
+
+    return jsonify({'status': 'ok'})
 
 if __name__ == '__main__':
     app.run(debug=True)
