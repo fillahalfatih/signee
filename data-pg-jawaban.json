@@ -54,12 +54,6 @@
         "isTrue": 1
     },
     {
-        "id": null,
-        "opsi_dipilih": "Y",
-        "jawaban_benar": "Y",
-        "isTrue": 1
-    },
-    {
         "id": 10,
         "opsi_dipilih": "Y",
         "jawaban_benar": "Y",
