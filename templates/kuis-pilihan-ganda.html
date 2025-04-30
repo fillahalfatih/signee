@@ -35,10 +35,21 @@
 
                                 <!-- Tombol navigasi -->
                                 <div class="d-flex gap-2 mt-4">
-                                    <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
+                                    <button type="button" class="btn btn-secondary"
+                                            id="back-btn"
+                                            data-id="{{ kuis.id }}"
+                                            {% if kuis.id == 1 %} disabled {% endif %}>
+                                        Back
+                                    </button>
+                                    {% if total_soal == kuis.id %}
+                                    <a href="/kuis-interaktif" class="btn btn-secondary" id="next-btn">Next</a>
+                                    {% else %}
                                     <button type="button" class="btn btn-secondary" id="next-btn" data-id="{{ kuis.id }}">Next</button>
+                                    {% endif %}
                                     <!-- <button type="button" class="btn btn-secondary" id="next-btn">Next</button> -->
                                 </div>
+                                <!-- <p>total soal: {{ total_soal }}</p> -->
+                                <!-- <p>kuis id: {{ kuis.id }}</p> -->
                             </div>
                             <div style="max-width: 400px !important;" class="mb-4 order-0">
                                 <img src="{{ url_for('static', filename=kuis.gambar) }}" alt="" width="100%" style="object-fit: cover; border-radius: 8px !important; aspect-ratio: 1/1;">
@@ -49,6 +60,7 @@
             </div>
         </div>
     </div>
+
     <!-- / Content -->
     <div class="content-backdrop fade"></div>
 </div>
@@ -89,6 +101,17 @@ document.getElementById('next-btn').addEventListener('click', function () {
         console.error(err);
         alert('Terjadi error!');
     });
+});
+
+document.getElementById('back-btn').addEventListener('click', function () {
+    const soalId = parseInt(this.dataset.id);
+
+    if (soalId > 1) {
+        window.location.href = `/kuis-pilihan-ganda/${soalId - 1}`;
+    } else {
+        // Bisa diarahkan ke halaman awal kuis, atau disable tombolnya
+        window.location.href = '/kuis-pilihan-ganda/1'; // atau halaman awal seperti '/kuis'
+    }
 });
 </script>
 

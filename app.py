@@ -54,9 +54,9 @@ def tips_trik():
     )
 
 @app.route('/kuis-pilihan-ganda', endpoint='kuis-pilihan-ganda')
-def kuis_pilihan_ganda():
+def kuis_pilihan_ganda_onboarding():
     return render_template(
-        'kuis-onboarding.html',
+        'kuis-pilihan-ganda-onboarding.html',
         title = 'Kuis Pilihan Ganda',
         active = 'kuis-pilihan-ganda'
     )
@@ -78,11 +78,11 @@ def kuis_pilihan_ganda_detail(kuis_id):
         abort(404, description="Kuis tidak ditemukan")
     
     return render_template(
-        'kuis-pilihan-ganda.html',  # ini file HTML buat detail kuisnya bro
+        'kuis-pilihan-ganda.html',
         title = f'Kuis Pilihan Ganda',
         active = 'kuis-pilihan-ganda',
-        # title=f'Kuis {kuis_id}',
-        kuis = kuis
+        kuis = kuis,
+        total_soal = len(kuis_data)  # Kirim total jumlah soal ke template
     )
     
 @app.route('/kuis-interaktif', endpoint='kuis-interaktif')

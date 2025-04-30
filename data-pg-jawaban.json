@@ -1,23 +1,5 @@
 [
     {
-        "id": 1,
-        "opsi_dipilih": "D",
-        "jawaban_benar": "B",
-        "isTrue": 0
-    },
-    {
-        "id": 2,
-        "opsi_dipilih": "H",
-        "jawaban_benar": "G",
-        "isTrue": 0
-    },
-    {
-        "id": 3,
-        "opsi_dipilih": "L",
-        "jawaban_benar": "K",
-        "isTrue": 0
-    },
-    {
         "id": 4,
         "opsi_dipilih": "P",
         "jawaban_benar": "N",
@@ -48,15 +30,39 @@
         "isTrue": 0
     },
     {
+        "id": 2,
+        "opsi_dipilih": "G",
+        "jawaban_benar": "G",
+        "isTrue": 1
+    },
+    {
+        "id": 3,
+        "opsi_dipilih": "L",
+        "jawaban_benar": "K",
+        "isTrue": 0
+    },
+    {
         "id": 9,
-        "opsi_dipilih": "Q",
+        "opsi_dipilih": "L",
         "jawaban_benar": "O",
         "isTrue": 0
     },
     {
         "id": 10,
-        "opsi_dipilih": "Y",
+        "opsi_dipilih": "U",
         "jawaban_benar": "Y",
+        "isTrue": 0
+    },
+    {
+        "id": 1,
+        "opsi_dipilih": "B",
+        "jawaban_benar": "B",
         "isTrue": 1
+    },
+    {
+        "id": null,
+        "opsi_dipilih": "S",
+        "jawaban_benar": "Y",
+        "isTrue": 0
     }
 ]
