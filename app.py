@@ -54,11 +54,19 @@ def tips_trik():
     )
 
 @app.route('/kuis-pilihan-ganda', endpoint='kuis-pilihan-ganda')
-def kuis_pilihan_ganda_onboarding():
+def kuis_pilihan_ganda():
+    try:
+        with open('data-pg.json') as f:
+            kuis_data = json.load(f)
+        total_soal = len(kuis_data)
+    except FileNotFoundError:
+        total_soal = 0
+
     return render_template(
         'kuis-pilihan-ganda-onboarding.html',
         title = 'Kuis Pilihan Ganda',
-        active = 'kuis-pilihan-ganda'
+        active = 'kuis-pilihan-ganda',
+        total_soal = total_soal  # ini yang penting dikirim
     )
     
 # Route untuk tiap kuis berdasarkan id
