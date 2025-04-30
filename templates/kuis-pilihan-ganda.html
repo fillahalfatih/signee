@@ -41,13 +41,16 @@
                                             {% if kuis.id == 1 %} disabled {% endif %}>
                                         Back
                                     </button>
-                                    {% if total_soal == kuis.id %}
-                                    <a href="/kuis-interaktif" class="btn btn-secondary" id="next-btn">Next</a>
-                                    {% else %}
-                                    <button type="button" class="btn btn-secondary" id="next-btn" data-id="{{ kuis.id }}">Next</button>
-                                    {% endif %}
-                                    <!-- <button type="button" class="btn btn-secondary" id="next-btn">Next</button> -->
+
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            id="next-btn"
+                                            data-id="{{ kuis.id }}"
+                                            data-total="{{ total_soal }}">
+                                        Next
+                                    </button>
                                 </div>
+
                                 <!-- <p>total soal: {{ total_soal }}</p> -->
                                 <!-- <p>kuis id: {{ kuis.id }}</p> -->
                             </div>
@@ -65,11 +68,12 @@
     <div class="content-backdrop fade"></div>
 </div>
 
-<script>
+<script> 
 document.getElementById('next-btn').addEventListener('click', function () {
     const selected = document.querySelector('input[name="answer"]:checked');
-    const soalId = this.dataset.id;
-    const jawabanBenar = "{{ kuis.jawaban }}"; // Ambil jawaban benar dari server
+    const soalId = parseInt(this.dataset.id);
+    const totalSoal = parseInt(this.dataset.total);
+    const jawabanBenar = "{{ kuis.jawaban }}";
 
     if (!selected) {
         alert('Pilih jawaban dulu, bro!');
@@ -84,7 +88,7 @@ document.getElementById('next-btn').addEventListener('click', function () {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: parseInt(soalId),
+            id: soalId,
             opsi_dipilih: opsiDipilih,
             jawaban_benar: jawabanBenar
         })
@@ -92,7 +96,11 @@ document.getElementById('next-btn').addEventListener('click', function () {
     .then(res => res.json())
     .then(data => {
         if (data.status === 'ok') {
-            window.location.href = `/kuis-pilihan-ganda/${parseInt(soalId) + 1}`;
+            if (soalId < totalSoal) {
+                window.location.href = `/kuis-pilihan-ganda/${soalId + 1}`;
+            } else {
+                window.location.href = `/kuis-interaktif`;
+            }
         } else {
             alert('Gagal menyimpan jawaban!');
         }
@@ -101,17 +109,6 @@ document.getElementById('next-btn').addEventListener('click', function () {
         console.error(err);
         alert('Terjadi error!');
     });
-});
-
-document.getElementById('back-btn').addEventListener('click', function () {
-    const soalId = parseInt(this.dataset.id);
-
-    if (soalId > 1) {
-        window.location.href = `/kuis-pilihan-ganda/${soalId - 1}`;
-    } else {
-        // Bisa diarahkan ke halaman awal kuis, atau disable tombolnya
-        window.location.href = '/kuis-pilihan-ganda/1'; // atau halaman awal seperti '/kuis'
-    }
 });
 </script>
 
