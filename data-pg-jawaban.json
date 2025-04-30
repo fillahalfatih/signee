@@ -1,68 +1,68 @@
 [
     {
-        "id": 4,
-        "opsi_dipilih": "P",
-        "jawaban_benar": "N",
-        "isTrue": 0
-    },
-    {
-        "id": 5,
-        "opsi_dipilih": "T",
-        "jawaban_benar": "R",
-        "isTrue": 0
-    },
-    {
-        "id": 6,
-        "opsi_dipilih": "X",
-        "jawaban_benar": "V",
-        "isTrue": 0
-    },
-    {
-        "id": 7,
-        "opsi_dipilih": "B",
-        "jawaban_benar": "Z",
-        "isTrue": 0
-    },
-    {
-        "id": 8,
-        "opsi_dipilih": "F",
-        "jawaban_benar": "E",
-        "isTrue": 0
-    },
-    {
-        "id": 2,
-        "opsi_dipilih": "G",
-        "jawaban_benar": "G",
-        "isTrue": 1
-    },
-    {
-        "id": 3,
-        "opsi_dipilih": "L",
-        "jawaban_benar": "K",
-        "isTrue": 0
-    },
-    {
-        "id": 9,
-        "opsi_dipilih": "L",
-        "jawaban_benar": "O",
-        "isTrue": 0
-    },
-    {
-        "id": 10,
-        "opsi_dipilih": "U",
-        "jawaban_benar": "Y",
-        "isTrue": 0
-    },
-    {
         "id": 1,
         "opsi_dipilih": "B",
         "jawaban_benar": "B",
         "isTrue": 1
     },
     {
+        "id": 2,
+        "opsi_dipilih": "H",
+        "jawaban_benar": "H",
+        "isTrue": 1
+    },
+    {
+        "id": 3,
+        "opsi_dipilih": "K",
+        "jawaban_benar": "K",
+        "isTrue": 1
+    },
+    {
+        "id": 4,
+        "opsi_dipilih": "N",
+        "jawaban_benar": "N",
+        "isTrue": 1
+    },
+    {
+        "id": 5,
+        "opsi_dipilih": "R",
+        "jawaban_benar": "R",
+        "isTrue": 1
+    },
+    {
+        "id": 6,
+        "opsi_dipilih": "V",
+        "jawaban_benar": "V",
+        "isTrue": 1
+    },
+    {
+        "id": 7,
+        "opsi_dipilih": "Z",
+        "jawaban_benar": "Z",
+        "isTrue": 1
+    },
+    {
+        "id": 8,
+        "opsi_dipilih": "E",
+        "jawaban_benar": "E",
+        "isTrue": 1
+    },
+    {
+        "id": 9,
+        "opsi_dipilih": "O",
+        "jawaban_benar": "O",
+        "isTrue": 1
+    },
+    {
         "id": null,
-        "opsi_dipilih": "S",
+        "opsi_dipilih": "Y",
         "jawaban_benar": "Y",
-        "isTrue": 0
+        "isTrue": 1
+    },
+    {
+        "id": 10,
+        "opsi_dipilih": "Y",
+        "jawaban_benar": "Y",
+        "isTrue": 1
     }
 ]

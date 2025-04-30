@@ -35,8 +35,8 @@
     background: #fff;
     flex: 1;
     user-select: none;
-    transform: translateX(-3%);
-    margin-left: 0px; /* atau pakai nilai yang sama dengan lebar radio button + jarak */
+    /* transform: translateX(-3%); */
+    margin-left: 0px;
     padding-left: 25px !important;
 }
 
