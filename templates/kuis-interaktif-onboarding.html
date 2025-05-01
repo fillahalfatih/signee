@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-lg-8 mb-4 order-1 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="d-flex align-items-end row p-lg-4 h-100">
+                        <div class="card-body"> 
+                            <h4 class="card-title lh-lg"><span class="p-1" style="background-color: #a0bbec30 !important; border-radius: 100%;">📝</span> Selamat Datang di <u style="color: #3368C4;"><b>{{ title }}!</b></u></h4>
+                            <p class="mb-3">Kamu akan mengerjakan <b>{{ total_soal }} soal kuis interaktif</b> untuk menguji pemahamanmu terhadap materi yang telah dipelajari. Pilih jawaban yang paling tepat dari setiap pertanyaan. Selamat mengerjakan!</p>
+                            <a href="{{ url_for('kuis_interaktif_detail', kuis_id=1) }}" class="btn btn-sm btn-primary py-2 px-3">Mulai Kuis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 order-0 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="row p-lg-4 h-100">
+                        <div class="card-body d-flex justify-content-center align-items-center py-4 py-lg-0 h-100">
+                            <img src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}" height="200"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- / Content -->
+    <div class="content-backdrop fade"></div>
+</div>
+
+<!-- Content wrapper -->
+{% endblock content %}

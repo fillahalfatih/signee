@@ -8,78 +8,52 @@
             <div class="col-lg-12 mb-4 order-0">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge text-bg-primary">Soal 1</span>
+                        <span class="badge text-bg-primary">Soal {{ kuis.id }}</span>
 
                         <div class="d-flex justify-content-between gap-4">                            
                             <div class="flex-grow-1">
-                                <h4 class="card-title my-4 lh-lg">Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf</h4>
-                                <p class="mb-4 rounded" style="font-size: 128px; width: 200px; color: #b6bcc3; border: 2px solid #dee2e6; text-align: center;">A</p>
-                                <!-- <p id="prediction-result">Prediksi akan muncul di sini...</p> -->
+                                <h4 class="card-title my-4 lh-lg">{{ kuis.soal }}</h4>
+                                <p id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; width: 200px; border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
+                                <p id="prediction-result">Prediksi akan muncul di sini...</p>
+                                <script>
+                                function updateSoalHurufColor() {
+                                    const prediction = document.getElementById('prediction-result').textContent.trim().toUpperCase();
+                                    const soalHuruf = "{{ kuis.soal_huruf.strip().upper() }}";
+                                    const soalHurufElem = document.getElementById('soal-huruf');
+
+                                    console.log("Prediksi:", prediction, "| Soal Huruf:", soalHuruf);
+
+                                    if (prediction === soalHuruf) {
+                                        soalHurufElem.style.color = 'green';
+                                        soalHurufElem.style.borderColor = 'green';
+                                    } else {
+                                        soalHurufElem.style.color = 'red';
+                                        soalHurufElem.style.borderColor = 'red';
+                                    }
+                                }
+
+                                // Ini penting ➜ pasang observer-nya setelah fungsi dan elemen dimuat
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    const predElem = document.getElementById('prediction-result');
+                                    const observer = new MutationObserver(() => {
+                                        updateSoalHurufColor();
+                                    });
+
+                                    observer.observe(predElem, { childList: true, subtree: true });
+                                });
+                            </script>
                                 <!-- Tombol navigasi -->
                                 <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
-                                    <button type="button" class="btn btn-secondary" id="next-btn">Next</button>
+                                    <button type="button" class="btn btn-secondary" id="back-btn">Kembali</button>
+                                    <button type="button" class="btn btn-secondary" id="next-btn">Selanjutnya</button>
                                 </div>
-                                
-                                <style>
-                                    /* Wrapper untuk membuat radio dan label sejajar */
-                                    .option-wrapper {
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 12px;
-                                    }
-
-                                    /* Basic card style */
-                                    .option-card {
-                                        border: 2px solid #dee2e6;
-                                        border-radius: 8px;
-                                        padding: 12px 16px;
-                                        transition: border-color 0.2s, background-color 0.2s;
-                                        cursor: pointer;
-                                        background: #fff;
-                                        flex: 1;
-                                        user-select: none;
-                                        transform: translateX(-3%);
-                                        margin-left: 0px; /* atau pakai nilai yang sama dengan lebar radio button + jarak */
-                                        padding-left: 25px !important;
-                                    }
-
-                                    /* Margin antara pilihan */
-                                    .option-wrapper:not(:last-child) {
-                                        margin-bottom: 12px;
-                                    }
-
-                                    /* Highlight pilihan yang dipilih */
-                                    input[type="radio"]:checked + .option-card {
-                                        border-color: #3368C4 !important;
-                                        background-color: #a0bbec30 !important;
-                                        color: #3368C4 !important;
-                                    }
-
-                                    /* Style ketika radio fokus */
-                                    input[type="radio"]:focus + .option-card {
-                                        border-color: #3368C4 !important;
-                                        outline: none;
-                                    }
-
-                                    .form-check-input:checked, .form-check-input[type=checkbox]:indeterminate {
-                                        background-color: #3368C4 !important;
-                                        border-color: #3368C4 !important;
-                                        box-shadow: 0 2px 4px 0 rgba(13, 110, 253, 0.4);
-                                        /* box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4); */
-                                    }
-
-                                    .form-check-input[type=radio] {
-                                        z-index: 999;
-                                    }
-                                </style>
                             </div>
                             <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0">
                                 <div class="mb-4">
-                                    <button id="capture" class="btn btn-success mt-2 w-100" onclick="capture()" disabled>Ambil Gambar</button>
+                                    <button id="capture" class="btn btn-primary mt-2 w-100" onclick="startCountdown()" disabled>Ambil Gambar</button>
                                     <div class="d-flex gap-2 mt-2">
-                                        <button class="btn btn-primary w-50" id="start-camera">Mulai Kamera</button>
-                                        <button class="btn btn-danger w-50" id="stop-camera" disabled>Matikan Kamera</button>
+                                        <button class="btn btn-outline-primary w-50" id="start-camera">Mulai Kamera</button>
+                                        <button class="btn btn-outline-primary w-50" id="stop-camera" disabled>Matikan Kamera</button>
                                     </div>
                                 </div>
                                 <div>
