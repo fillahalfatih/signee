@@ -66,7 +66,7 @@ def kuis_pilihan_ganda():
         'kuis-pilihan-ganda-onboarding.html',
         title = 'Kuis Pilihan Ganda',
         active = 'kuis-pilihan-ganda',
-        total_soal = total_soal  # ini yang penting dikirim
+        total_soal = total_soal
     )
     
 # Route untuk tiap kuis berdasarkan id
@@ -95,10 +95,42 @@ def kuis_pilihan_ganda_detail(kuis_id):
     
 @app.route('/kuis-interaktif', endpoint='kuis-interaktif')
 def kuis_interaktif():
+    try:
+        with open('data-interaktif.json') as f:
+            kuis_data = json.load(f)
+        total_soal = len(kuis_data)
+    except FileNotFoundError:
+        total_soal = 0
+
+    return render_template(
+        'kuis-interaktif-onboarding.html',
+        title = 'Kuis Interaktif',
+        active = 'kuis-interaktif',
+        total_soal = total_soal
+    )
+
+# Route untuk tiap kuis berdasarkan id
+@app.route('/kuis-interaktif/<int:kuis_id>')
+def kuis_interaktif_detail(kuis_id):
+    # Load data dari JSON
+    try:
+        with open('data-interaktif.json') as f:
+            kuis_data = json.load(f)
+    except FileNotFoundError:
+        abort(404, description="Data tidak ditemukan")
+    
+    # Cari kuis berdasarkan id
+    kuis = next((item for item in kuis_data if item["id"] == kuis_id), None)
+    
+    if kuis is None:
+        abort(404, description="Kuis tidak ditemukan")
+    
     return render_template(
         'kuis-interaktif.html',
-        title = 'Kuis Interaktif',
-        active = 'kuis-interaktif'
+        title = f'Kuis Interaktif',
+        active = 'kuis-interaktif',
+        kuis = kuis,
+        total_soal = len(kuis_data)  # Kirim total jumlah soal ke template
     )
 
 @app.route('/skor')
@@ -123,14 +155,6 @@ def tentang():
         'tentang.html',
         title = 'Tentang',
         active = 'tentang'
-    )
-    
-@app.route('/saran-masukan', endpoint='saran-masukan')
-def saran_masukan():
-    return render_template(
-        'saran-masukan.html',
-        title = 'Saran & Masukan',
-        active = 'saran-masukan'
     )
 
 @app.route('/predict', methods=['POST'])
