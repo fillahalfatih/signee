@@ -187,6 +187,7 @@ def submit_jawaban():
         "id": data['id'],
         "opsi_dipilih": data['opsi_dipilih'],
         "jawaban_benar": data['jawaban_benar'],
+        "gambar_soal": data['gambar_soal'],
         "isTrue": 1 if data['opsi_dipilih'] == data['jawaban_benar'] else 0
     }
 

@@ -39,7 +39,7 @@
                                             id="back-btn"
                                             data-id="{{ kuis.id }}"
                                             {% if kuis.id == 1 %} disabled {% endif %}>
-                                        Back
+                                        Kembali
                                     </button>
 
                                     <button type="button"
@@ -47,7 +47,7 @@
                                             id="next-btn"
                                             data-id="{{ kuis.id }}"
                                             data-total="{{ total_soal }}">
-                                        Next
+                                        Selanjutnya
                                     </button>
                                 </div>
 
@@ -74,6 +74,7 @@ document.getElementById('next-btn').addEventListener('click', function () {
     const soalId = parseInt(this.dataset.id);
     const totalSoal = parseInt(this.dataset.total);
     const jawabanBenar = "{{ kuis.jawaban }}";
+    const gambarSoal = "{{ kuis.gambar }}";
 
     if (!selected) {
         alert('Pilih jawaban dulu, bro!');
@@ -90,7 +91,8 @@ document.getElementById('next-btn').addEventListener('click', function () {
         body: JSON.stringify({
             id: soalId,
             opsi_dipilih: opsiDipilih,
-            jawaban_benar: jawabanBenar
+            jawaban_benar: jawabanBenar,
+            gambar_soal: gambarSoal
         })
     })
     .then(res => res.json())

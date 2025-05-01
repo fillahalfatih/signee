@@ -8,9 +8,9 @@
             <div class="col-lg-8 mb-4 order-1 d-flex align-items-stretch">
                 <div class="card w-100">
                     <div class="d-flex align-items-end row p-lg-4 h-100">
-                        <div class="card-body">
-                            <h4 class="card-title">📝 Selamat Datang di <u style="color: #3368C4;"><b>{{ title }}!</b></u></h4>
-                            <p class="mb-3">Kamu akan mengerjakan <b>{{ total_soal }} soal pilihan ganda</b> untuk menguji pemahamanmu terhadap materi yang telah dipelajari. Pilih jawaban yang paling tepat dari setiap pertanyaan. Jangan khawatir, kamu bisa melihat gambar pendukung di setiap soal!</p>
+                        <div class="card-body"> 
+                            <h4 class="card-title lh-lg"><span class="p-1" style="background-color: #a0bbec30 !important; border-radius: 100%;">📝</span> Selamat Datang di <u style="color: #3368C4;"><b>{{ title }}!</b></u></h4>
+                            <p class="mb-3">Kamu akan mengerjakan <b>{{ total_soal }} soal pilihan ganda</b> untuk menguji pemahamanmu terhadap materi yang telah dipelajari. Pilih jawaban yang paling tepat dari setiap pertanyaan. Selamat mengerjakan!</p>
                             <a href="{{ url_for('kuis_pilihan_ganda_detail', kuis_id=1) }}" class="btn btn-sm btn-primary py-2 px-3">Mulai Kuis</a>
                         </div>
                     </div>
