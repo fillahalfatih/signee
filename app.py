@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, abort
 import base64
 import cv2
 import numpy as np
 import mediapipe as mp
 import pickle
 import sklearn
+import json
+import os
 
 app = Flask(__name__)
 
@@ -53,10 +55,42 @@ def tips_trik():
 
 @app.route('/kuis-pilihan-ganda', endpoint='kuis-pilihan-ganda')
 def kuis_pilihan_ganda():
+    try:
+        with open('data-pg.json') as f:
+            kuis_data = json.load(f)
+        total_soal = len(kuis_data)
+    except FileNotFoundError:
+        total_soal = 0
+
+    return render_template(
+        'kuis-pilihan-ganda-onboarding.html',
+        title = 'Kuis Pilihan Ganda',
+        active = 'kuis-pilihan-ganda',
+        total_soal = total_soal  # ini yang penting dikirim
+    )
+    
+# Route untuk tiap kuis berdasarkan id
+@app.route('/kuis-pilihan-ganda/<int:kuis_id>')
+def kuis_pilihan_ganda_detail(kuis_id):
+    # Load data dari JSON
+    try:
+        with open('data-pg.json') as f:
+            kuis_data = json.load(f)
+    except FileNotFoundError:
+        abort(404, description="Data tidak ditemukan")
+    
+    # Cari kuis berdasarkan id
+    kuis = next((item for item in kuis_data if item["id"] == kuis_id), None)
+    
+    if kuis is None:
+        abort(404, description="Kuis tidak ditemukan")
+    
     return render_template(
         'kuis-pilihan-ganda.html',
-        title = 'Kuis Pilihan Ganda',
-        active = 'kuis-pilihan-ganda'
+        title = f'Kuis Pilihan Ganda',
+        active = 'kuis-pilihan-ganda',
+        kuis = kuis,
+        total_soal = len(kuis_data)  # Kirim total jumlah soal ke template
     )
     
 @app.route('/kuis-interaktif', endpoint='kuis-interaktif')
@@ -145,6 +179,39 @@ def predict():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/submit-jawaban-pg', methods=['POST'])
+def submit_jawaban():
+    data = request.get_json()
+    jawaban_baru = {
+        "id": data['id'],
+        "opsi_dipilih": data['opsi_dipilih'],
+        "jawaban_benar": data['jawaban_benar'],
+        "gambar_soal": data['gambar_soal'],
+        "isTrue": 1 if data['opsi_dipilih'] == data['jawaban_benar'] else 0
+    }
+
+    path = 'data-pg-jawaban.json'
+
+    # Cek kalau file belum ada
+    if not os.path.exists(path):
+        jawaban_list = []
+    else:
+        with open(path, 'r') as f:
+            try:
+                jawaban_list = json.load(f)
+            except json.JSONDecodeError:
+                jawaban_list = []
+
+    # Hapus jawaban lama jika udah ada id yang sama (overwrite)
+    jawaban_list = [j for j in jawaban_list if j['id'] != data['id']]
+    jawaban_list.append(jawaban_baru)
+
+    # Simpan kembali
+    with open(path, 'w') as f:
+        json.dump(jawaban_list, f, indent=4)
+
+    return jsonify({'status': 'ok'})
 
 if __name__ == '__main__':
     app.run(debug=True)
