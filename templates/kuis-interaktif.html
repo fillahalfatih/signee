@@ -10,11 +10,10 @@
                     <div class="card-body">
                         <span class="badge text-bg-primary">Soal {{ kuis.id }}</span>
 
-                        <div class="d-flex justify-content-between gap-4">                            
+                        <div class="d-md-flex justify-content-between align-items-start gap-4">                            
                             <div class="flex-grow-1">
                                 <h4 class="card-title my-4 lh-lg">{{ kuis.soal }}</h4>
                                 <p data-soal="{{ kuis.soal_huruf }}" id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; width: 200px;border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
-                                <p id="prediction-result" class="">Prediksi akan muncul di sini...</p>
                                 <script>
                                 function updateSoalHurufColor() {
                                     const predictionRaw = document.getElementById('prediction-result').textContent.trim().toUpperCase();
@@ -25,11 +24,11 @@
                                     // console.log("Prediksi:", prediction, "| Soal Huruf:", soalHuruf);
 
                                     if (prediction === soalHuruf) {
-                                        soalHurufElem.style.color = 'green';
-                                        soalHurufElem.style.borderColor = 'green';
+                                        soalHurufElem.style.color = '#28a745'; // Hijau
+                                        soalHurufElem.style.borderColor = '#28a745'; // Hijau
                                     } else {
-                                        soalHurufElem.style.color = 'red';
-                                        soalHurufElem.style.borderColor = 'red';
+                                        soalHurufElem.style.color = '#dc3545'; // Merah
+                                        soalHurufElem.style.borderColor = '#dc3545'; // Merah
                                     }
                                 }
 
@@ -57,7 +56,10 @@
                                     </button>
                                 </div>
                             </div>
-                            <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0">
+
+                            <hr class="my-5 d-md-none">
+
+                            <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0 mt-4 mt-lg-0">
                                 <div class="mb-4">
                                     <button id="capture" class="btn btn-primary mt-2 w-100" onclick="startCountdown()" disabled>Ambil Gambar</button>
                                     <div class="d-flex gap-2 mt-2">
@@ -65,10 +67,19 @@
                                         <button class="btn btn-outline-primary w-50" id="stop-camera" disabled>Matikan Kamera</button>
                                     </div>
                                 </div>
-                                <div>
-                                    <img class="mb-2" id="preview-image" src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}" alt="" style="width: 400px; height: 300px; object-fit: cover; border-radius: 8px !important;">
+                                <div style="position: relative;">
+                                    <!-- Prediction result positioned at top-left of video -->
+                                    <p id="prediction-result"
+                                       class="bg-secondary-subtle m-0 px-3 py-2 d-inline-block rounded"
+                                       style="position: absolute; top: 10px; left: 10px; z-index: 2; max-width: 90%; display: inline-block; pointer-events: none;">
+                                        Prediksi akan muncul di sini...
+                                    </p>
+                                    <img class="mb-2 w-100" id="preview-image"
+                                        src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}"
+                                        alt=""
+                                        style="height: auto; object-fit: cover; border-radius: 8px !important;">
                                     <video id="webcam" width="400px" height="300px" autoplay style="display:none; border-radius: 8px !important; object-fit: cover;" class="mb-2"></video>
-                                    <canvas id="canvas" width="350px" style="display:none;"></canvas>
+                                    <canvas class="d-none" id="canvas" width="400px" height="300px"></canvas>
                                     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
                                 </div>
                             </div>

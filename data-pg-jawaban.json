@@ -1,52 +1,59 @@
 [
     {
+        "id": 1,
+        "opsi_dipilih": "B",
+        "jawaban_benar": "B",
+        "gambar_soal": "assets/img/soal-pg/B.png",
+        "isTrue": 1
+    },
+    {
         "id": 2,
-        "opsi_dipilih": "G",
+        "opsi_dipilih": "H",
         "jawaban_benar": "H",
         "gambar_soal": "assets/img/soal-pg/H.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 3,
-        "opsi_dipilih": "L",
+        "opsi_dipilih": "K",
         "jawaban_benar": "K",
         "gambar_soal": "assets/img/soal-pg/K.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 4,
-        "opsi_dipilih": "M",
+        "opsi_dipilih": "N",
         "jawaban_benar": "N",
         "gambar_soal": "assets/img/soal-pg/N.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 5,
-        "opsi_dipilih": "S",
+        "opsi_dipilih": "R",
         "jawaban_benar": "R",
         "gambar_soal": "assets/img/soal-pg/R.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 6,
-        "opsi_dipilih": "W",
+        "opsi_dipilih": "V",
         "jawaban_benar": "V",
         "gambar_soal": "assets/img/soal-pg/V.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 7,
-        "opsi_dipilih": "B",
+        "opsi_dipilih": "Z",
         "jawaban_benar": "Z",
         "gambar_soal": "assets/img/soal-pg/Z.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 8,
-        "opsi_dipilih": "C",
+        "opsi_dipilih": "E",
         "jawaban_benar": "E",
         "gambar_soal": "assets/img/soal-pg/E.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 9,
@@ -57,16 +64,9 @@
     },
     {
         "id": 10,
-        "opsi_dipilih": "U",
+        "opsi_dipilih": "Y",
         "jawaban_benar": "Y",
         "gambar_soal": "assets/img/soal-pg/Y.png",
-        "isTrue": 0
-    },
-    {
-        "id": 1,
-        "opsi_dipilih": "B",
-        "jawaban_benar": "B",
-        "gambar_soal": "assets/img/soal-pg/B.png",
         "isTrue": 1
     }
 ]
