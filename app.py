@@ -237,5 +237,41 @@ def submit_jawaban():
 
     return jsonify({'status': 'ok'})
 
+@app.route('/submit-jawaban-interaktif', methods=['POST'])
+def submit_jawaban_interaktif():
+    try:
+        data = request.get_json()
+        jawaban_baru = {
+            "id": data['id'],
+            "soal": data['soal'],
+            "soal_huruf": data['soal_huruf'],
+            "jawaban": data['jawaban'],
+            "isTrue": data['isTrue']
+        }
+
+        path = 'data-interaktif-jawaban.json'
+
+        # Cek jika file belum ada
+        if not os.path.exists(path):
+            jawaban_list = []
+        else:
+            with open(path, 'r') as f:
+                try:
+                    jawaban_list = json.load(f)
+                except json.JSONDecodeError:
+                    jawaban_list = []
+
+        # Hapus jawaban lama jika sudah ada id yang sama (overwrite)
+        jawaban_list = [j for j in jawaban_list if j['id'] != data['id']]
+        jawaban_list.append(jawaban_baru)
+
+        # Simpan kembali ke file
+        with open(path, 'w') as f:
+            json.dump(jawaban_list, f, indent=4)
+
+        return jsonify({'status': 'ok'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)

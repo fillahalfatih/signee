@@ -81,5 +81,65 @@
     <!-- / Content -->
     <div class="content-backdrop fade"></div>
 </div>
+
+<script>
+document.getElementById('next-btn').addEventListener('click', function () {
+    const soalId = parseInt(this.dataset.id); // Ambil ID soal saat ini
+    const totalSoal = parseInt(this.dataset.total); // Ambil total jumlah soal
+    const soalHuruf = document.getElementById('soal-huruf').dataset.soal.trim().toUpperCase(); // Ambil soal_huruf
+    const predictionRaw = document.getElementById('prediction-result').textContent.trim().toUpperCase();
+    const jawaban = predictionRaw.replace("PREDIKSI: ", "").trim(); // Ambil prediksi
+
+    // Periksa apakah prediksi sudah dilakukan
+    if (jawaban === "" || jawaban === "PREDIKSI AKAN MUNCUL DI SINI...") {
+        alert("Silakan lakukan prediksi terlebih dahulu sebelum melanjutkan!");
+        return;
+    }
+
+    const isTrue = (soalHuruf === jawaban) ? 1 : 0; // Tentukan isTrue
+
+    // Kirim data ke server
+    fetch('/submit-jawaban-interaktif', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: soalId,
+            soal: "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+            soal_huruf: soalHuruf,
+            jawaban: jawaban,
+            isTrue: isTrue
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'ok') {
+            // Jika soal terakhir, arahkan ke halaman skor
+            if (soalId < totalSoal) {
+                window.location.href = `/kuis-interaktif/${soalId + 1}`;
+            } else {
+                window.location.href = `/skor`;
+            }
+        } else {
+            alert('Gagal menyimpan jawaban!');
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err);
+        alert('Terjadi error saat mengirim data!');
+    });
+});
+
+document.getElementById('back-btn').addEventListener('click', function () {
+    const soalId = parseInt(this.dataset.id); // Ambil ID soal saat ini
+
+    // Periksa apakah ini bukan soal pertama
+    if (soalId > 1) {
+        // Arahkan ke soal sebelumnya
+        window.location.href = `/kuis-interaktif/${soalId - 1}`;
+    }
+});
+</script>
 <!-- Content wrapper -->
 {% endblock content %}
