@@ -31,7 +31,7 @@
         "id": 1,
         "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
         "soal_huruf": "F",
-        "jawaban": "F",
-        "isTrue": 1
+        "jawaban": "A",
+        "isTrue": 0
     }
 ]

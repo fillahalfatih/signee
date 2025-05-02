@@ -73,3 +73,29 @@ input[type="radio"]:focus + .option-card {
     color: #b6bcc3;
     transition: color 0.3s; /* Add transition for smooth color change */
 }
+
+.btn-primary.disabled, .btn-primary:disabled {
+    background-color: #3368C4 !important;
+    border-color: #3368C4 !important;
+    color: #fff !important;
+    opacity: 0.5 !important;
+}
+
+.btn-outline-primary {
+    color: #3368C4 !important;
+    border-color: #3368C4 !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3368C4 !important;
+    color: #fff !important;
+    border-color: #3368C4 !important;
+}
+
+.btn-outline-primary:disabled {
+    background-color: transparent !important;
+    color: #3368C4 !important;
+    border-color: #3368C4 !important;
+    opacity: 0.5 !important;
+}
