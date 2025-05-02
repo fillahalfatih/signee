@@ -13,15 +13,16 @@
                         <div class="d-flex justify-content-between gap-4">                            
                             <div class="flex-grow-1">
                                 <h4 class="card-title my-4 lh-lg">{{ kuis.soal }}</h4>
-                                <p id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; width: 200px; border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
-                                <p id="prediction-result">Prediksi akan muncul di sini...</p>
+                                <p data-soal="{{ kuis.soal_huruf }}" id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; width: 200px;border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
+                                <p id="prediction-result" class="">Prediksi akan muncul di sini...</p>
                                 <script>
                                 function updateSoalHurufColor() {
-                                    const prediction = document.getElementById('prediction-result').textContent.trim().toUpperCase();
-                                    const soalHuruf = "{{ kuis.soal_huruf.strip().upper() }}";
+                                    const predictionRaw = document.getElementById('prediction-result').textContent.trim().toUpperCase();
+                                    const prediction = predictionRaw.replace("PREDIKSI: ", "").trim();
                                     const soalHurufElem = document.getElementById('soal-huruf');
+                                    const soalHuruf = soalHurufElem.dataset.soal.trim().toUpperCase();
 
-                                    console.log("Prediksi:", prediction, "| Soal Huruf:", soalHuruf);
+                                    // console.log("Prediksi:", prediction, "| Soal Huruf:", soalHuruf);
 
                                     if (prediction === soalHuruf) {
                                         soalHurufElem.style.color = 'green';
@@ -32,20 +33,28 @@
                                     }
                                 }
 
-                                // Ini penting ➜ pasang observer-nya setelah fungsi dan elemen dimuat
                                 document.addEventListener("DOMContentLoaded", function () {
                                     const predElem = document.getElementById('prediction-result');
-                                    const observer = new MutationObserver(() => {
-                                        updateSoalHurufColor();
-                                    });
-
+                                    const observer = new MutationObserver(updateSoalHurufColor);
                                     observer.observe(predElem, { childList: true, subtree: true });
                                 });
-                            </script>
+                                </script>
                                 <!-- Tombol navigasi -->
-                                <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-secondary" id="back-btn">Kembali</button>
-                                    <button type="button" class="btn btn-secondary" id="next-btn">Selanjutnya</button>
+                                <div class="d-flex gap-2 mt-4">
+                                    <button type="button" class="btn btn-secondary"
+                                            id="back-btn"
+                                            data-id="{{ kuis.id }}"
+                                            {% if kuis.id == 1 %} disabled {% endif %}>
+                                        Kembali
+                                    </button>
+
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            id="next-btn"
+                                            data-id="{{ kuis.id }}"
+                                            data-total="{{ total_soal }}">
+                                        Selanjutnya
+                                    </button>
                                 </div>
                             </div>
                             <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0">
