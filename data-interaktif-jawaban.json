@@ -1,1 +1,37 @@
-
+[
+    {
+        "id": 2,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "C",
+        "jawaban": "PREDIKSI AKAN MUNCUL DI SINI...",
+        "isTrue": 0
+    },
+    {
+        "id": 3,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "L",
+        "jawaban": "PREDIKSI AKAN MUNCUL DI SINI...",
+        "isTrue": 0
+    },
+    {
+        "id": 4,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "Q",
+        "jawaban": "PREDIKSI AKAN MUNCUL DI SINI...",
+        "isTrue": 0
+    },
+    {
+        "id": 5,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "X",
+        "jawaban": "PREDIKSI AKAN MUNCUL DI SINI...",
+        "isTrue": 0
+    },
+    {
+        "id": 1,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "F",
+        "jawaban": "F",
+        "isTrue": 1
+    }
+]
