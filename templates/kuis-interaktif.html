@@ -6,8 +6,13 @@
         height: auto;
     }
 
+    #webcam {
+        width: 100%;
+    }
+
     @media screen and (min-width: 768px) {
-        #preview-image {
+        #preview-image,
+        #webcam {
             width: 400px !important;
             height: 300px;
         }
@@ -83,7 +88,7 @@
                                     <!-- Prediction result positioned at top-left of video -->
                                     <p id="prediction-result"
                                        class="bg-secondary-subtle m-0 px-3 py-2 d-inline-block rounded"
-                                       style="position: absolute; top: 10px; left: 10px; z-index: 2; max-width: 90%; display: inline-block; pointer-events: none;">
+                                       style="position: absolute; top: 10px; left: 10px; z-index: 2; max-width: 90%; display: inline-block; pointer-events: none; z-index: 1000;">
                                         Prediksi akan muncul di sini...
                                     </p>
                                     <img class="mb-2 w-100" id="preview-image"
@@ -91,8 +96,23 @@
                                         alt=""
                                         style="object-fit: contain; border-radius: 8px !important; transform: scaleX(-1); background-color: #a0bbec30;">
                                     <video id="webcam" width="400px" height="300px" autoplay style="display:none; border-radius: 8px !important; object-fit: cover;" class="mb-2"></video>
+                                    <!-- Scan effect overlay -->
+                                    <div id="scan-effect" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; border-radius: 8px">
+                                        <div id="scan-line" style="position:absolute; left:0; width:100%; height:4px; background:rgba(40, 167, 70, 0.629); box-shadow:0 0 16px 4px #28a74580; animation: scan-move 2s linear infinite;"></div>
+                                    </div>
                                     <canvas class="d-none" id="canvas" width="400px" height="300px"></canvas>
                                     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+                                    <style>
+                                        @keyframes scan-move {
+                                            0% { top: 0; }
+                                            50% { top: calc(100% - 4px); }
+                                            100% { top: 0; }
+                                        }
+                                        #scan-line {
+                                            animation-duration: 4s !important;
+                                        }
+                                    </style>
+
                                 </div>
                             </div>
                         </div>
@@ -162,6 +182,16 @@ document.getElementById('back-btn').addEventListener('click', function () {
         // Arahkan ke soal sebelumnya
         window.location.href = `/kuis-interaktif/${soalId - 1}`;
     }
+});
+
+document.getElementById('start-camera').addEventListener('click', function () {
+    // ...kode kamu sebelumnya
+    document.getElementById('scan-effect').style.display = 'block';
+});
+
+document.getElementById('stop-camera').addEventListener('click', function () {
+    // ...kode kamu sebelumnya
+    document.getElementById('scan-effect').style.display = 'none';
 });
 </script>
 <!-- Content wrapper -->
