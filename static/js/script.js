@@ -74,3 +74,23 @@ stopBtn.addEventListener('click', function() {
     previewImg.style.display = '';
     webcam.style.display = 'none';
 });
+
+function startCountdown() {
+    const captureBtn = document.getElementById('capture');
+    let seconds = 3;
+    const originalText = 'Ambil Gambar';
+    captureBtn.disabled = true;
+    captureBtn.textContent = seconds;
+
+    const interval = setInterval(() => {
+        seconds--;
+        if (seconds > 0) {
+            captureBtn.textContent = seconds;
+        } else {
+            clearInterval(interval);
+            captureBtn.textContent = originalText;
+            captureBtn.disabled = false;
+            capture();
+        }
+    }, 1000);
+}

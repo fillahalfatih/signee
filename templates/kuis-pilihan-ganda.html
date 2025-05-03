@@ -112,6 +112,15 @@ document.getElementById('next-btn').addEventListener('click', function () {
         alert('Terjadi error!');
     });
 });
+document.getElementById('back-btn').addEventListener('click', function () {
+    const soalId = parseInt(this.dataset.id); // Ambil ID soal saat ini
+
+    // Periksa apakah ini bukan soal pertama
+    if (soalId > 1) {
+        // Arahkan ke soal sebelumnya
+        window.location.href = `/kuis-interaktif/${soalId - 1}`;
+    }
+});
 </script>
 
 <!-- Content wrapper -->
