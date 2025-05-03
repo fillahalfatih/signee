@@ -36,17 +36,17 @@
     },
     {
         "id": 6,
-        "opsi_dipilih": "U",
+        "opsi_dipilih": "V",
         "jawaban_benar": "V",
         "gambar_soal": "assets/img/soal-pg/V.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 7,
-        "opsi_dipilih": "A",
+        "opsi_dipilih": "Z",
         "jawaban_benar": "Z",
         "gambar_soal": "assets/img/soal-pg/Z.png",
-        "isTrue": 0
+        "isTrue": 1
     },
     {
         "id": 8,
@@ -64,9 +64,9 @@
     },
     {
         "id": 10,
-        "opsi_dipilih": "T",
+        "opsi_dipilih": "Y",
         "jawaban_benar": "Y",
         "gambar_soal": "assets/img/soal-pg/Y.png",
-        "isTrue": 0
+        "isTrue": 1
     }
 ]

@@ -66,7 +66,7 @@ def kuis_pilihan_ganda():
         'kuis-pilihan-ganda-onboarding.html',
         title = 'Kuis Pilihan Ganda',
         active = 'kuis-pilihan-ganda',
-        total_soal = total_soal  # ini yang penting dikirim
+        total_soal = total_soal
     )
     
 # Route untuk tiap kuis berdasarkan id
@@ -95,10 +95,42 @@ def kuis_pilihan_ganda_detail(kuis_id):
     
 @app.route('/kuis-interaktif', endpoint='kuis-interaktif')
 def kuis_interaktif():
+    try:
+        with open('data-interaktif.json') as f:
+            kuis_data = json.load(f)
+        total_soal = len(kuis_data)
+    except FileNotFoundError:
+        total_soal = 0
+
+    return render_template(
+        'kuis-interaktif-onboarding.html',
+        title = 'Kuis Interaktif',
+        active = 'kuis-interaktif',
+        total_soal = total_soal
+    )
+
+# Route untuk tiap kuis berdasarkan id
+@app.route('/kuis-interaktif/<int:kuis_id>')
+def kuis_interaktif_detail(kuis_id):
+    # Load data dari JSON
+    try:
+        with open('data-interaktif.json') as f:
+            kuis_data = json.load(f)
+    except FileNotFoundError:
+        abort(404, description="Data tidak ditemukan")
+    
+    # Cari kuis berdasarkan id
+    kuis = next((item for item in kuis_data if item["id"] == kuis_id), None)
+    
+    if kuis is None:
+        abort(404, description="Kuis tidak ditemukan")
+    
     return render_template(
         'kuis-interaktif.html',
-        title = 'Kuis Interaktif',
-        active = 'kuis-interaktif'
+        title = f'Kuis Interaktif',
+        active = 'kuis-interaktif',
+        kuis = kuis,
+        total_soal = len(kuis_data)  # Kirim total jumlah soal ke template
     )
 
 @app.route('/skor')
@@ -123,14 +155,6 @@ def tentang():
         'tentang.html',
         title = 'Tentang',
         active = 'tentang'
-    )
-    
-@app.route('/saran-masukan', endpoint='saran-masukan')
-def saran_masukan():
-    return render_template(
-        'saran-masukan.html',
-        title = 'Saran & Masukan',
-        active = 'saran-masukan'
     )
 
 @app.route('/predict', methods=['POST'])
@@ -212,6 +236,42 @@ def submit_jawaban():
         json.dump(jawaban_list, f, indent=4)
 
     return jsonify({'status': 'ok'})
+
+@app.route('/submit-jawaban-interaktif', methods=['POST'])
+def submit_jawaban_interaktif():
+    try:
+        data = request.get_json()
+        jawaban_baru = {
+            "id": data['id'],
+            "soal": data['soal'],
+            "soal_huruf": data['soal_huruf'],
+            "jawaban": data['jawaban'],
+            "isTrue": data['isTrue']
+        }
+
+        path = 'data-interaktif-jawaban.json'
+
+        # Cek jika file belum ada
+        if not os.path.exists(path):
+            jawaban_list = []
+        else:
+            with open(path, 'r') as f:
+                try:
+                    jawaban_list = json.load(f)
+                except json.JSONDecodeError:
+                    jawaban_list = []
+
+        # Hapus jawaban lama jika sudah ada id yang sama (overwrite)
+        jawaban_list = [j for j in jawaban_list if j['id'] != data['id']]
+        jawaban_list.append(jawaban_baru)
+
+        # Simpan kembali ke file
+        with open(path, 'w') as f:
+            json.dump(jawaban_list, f, indent=4)
+
+        return jsonify({'status': 'ok'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

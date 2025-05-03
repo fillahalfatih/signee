@@ -1,6 +1,18 @@
 {% extends "layouts/main.html" %}
 
 {% block content %}
+<style>
+    #preview-image {
+        height: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        #preview-image {
+            width: 400px !important;
+            height: 300px;
+        }
+    }
+</style>
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -8,84 +20,78 @@
             <div class="col-lg-12 mb-4 order-0">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge text-bg-primary">Soal 1</span>
+                        <span class="badge text-bg-primary">Soal {{ kuis.id }}</span>
 
-                        <div class="d-flex justify-content-between gap-4">                            
+                        <div class="d-md-flex justify-content-between align-items-start gap-4">                            
                             <div class="flex-grow-1">
-                                <h4 class="card-title my-4 lh-lg">Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf</h4>
-                                <p class="mb-4 rounded" style="font-size: 128px; width: 200px; color: #b6bcc3; border: 2px solid #dee2e6; text-align: center;">A</p>
-                                <!-- <p id="prediction-result">Prediksi akan muncul di sini...</p> -->
+                                <h4 class="card-title my-4 lh-lg">{{ kuis.soal }}</h4>
+                                <p data-soal="{{ kuis.soal_huruf }}" id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; width: 200px;border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
+                                <script>
+                                function updateSoalHurufColor() {
+                                    const predictionRaw = document.getElementById('prediction-result').textContent.trim().toUpperCase();
+                                    const prediction = predictionRaw.replace("PREDIKSI: ", "").trim();
+                                    const soalHurufElem = document.getElementById('soal-huruf');
+                                    const soalHuruf = soalHurufElem.dataset.soal.trim().toUpperCase();
+
+                                    // console.log("Prediksi:", prediction, "| Soal Huruf:", soalHuruf);
+
+                                    if (prediction === soalHuruf) {
+                                        soalHurufElem.style.color = '#28a745'; // Hijau
+                                        soalHurufElem.style.borderColor = '#28a745'; // Hijau
+                                    } else {
+                                        soalHurufElem.style.color = '#dc3545'; // Merah
+                                        soalHurufElem.style.borderColor = '#dc3545'; // Merah
+                                    }
+                                }
+
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    const predElem = document.getElementById('prediction-result');
+                                    const observer = new MutationObserver(updateSoalHurufColor);
+                                    observer.observe(predElem, { childList: true, subtree: true });
+                                });
+                                </script>
                                 <!-- Tombol navigasi -->
-                                <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
-                                    <button type="button" class="btn btn-secondary" id="next-btn">Next</button>
+                                <div class="d-flex gap-2 mt-4">
+                                    <button type="button" class="btn btn-secondary"
+                                            id="back-btn"
+                                            data-id="{{ kuis.id }}"
+                                            {% if kuis.id == 1 %} disabled {% endif %}>
+                                        Kembali
+                                    </button>
+
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            id="next-btn"
+                                            data-id="{{ kuis.id }}"
+                                            data-total="{{ total_soal }}">
+                                        Selanjutnya
+                                    </button>
                                 </div>
-                                
-                                <style>
-                                    /* Wrapper untuk membuat radio dan label sejajar */
-                                    .option-wrapper {
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 12px;
-                                    }
-
-                                    /* Basic card style */
-                                    .option-card {
-                                        border: 2px solid #dee2e6;
-                                        border-radius: 8px;
-                                        padding: 12px 16px;
-                                        transition: border-color 0.2s, background-color 0.2s;
-                                        cursor: pointer;
-                                        background: #fff;
-                                        flex: 1;
-                                        user-select: none;
-                                        transform: translateX(-3%);
-                                        margin-left: 0px; /* atau pakai nilai yang sama dengan lebar radio button + jarak */
-                                        padding-left: 25px !important;
-                                    }
-
-                                    /* Margin antara pilihan */
-                                    .option-wrapper:not(:last-child) {
-                                        margin-bottom: 12px;
-                                    }
-
-                                    /* Highlight pilihan yang dipilih */
-                                    input[type="radio"]:checked + .option-card {
-                                        border-color: #3368C4 !important;
-                                        background-color: #a0bbec30 !important;
-                                        color: #3368C4 !important;
-                                    }
-
-                                    /* Style ketika radio fokus */
-                                    input[type="radio"]:focus + .option-card {
-                                        border-color: #3368C4 !important;
-                                        outline: none;
-                                    }
-
-                                    .form-check-input:checked, .form-check-input[type=checkbox]:indeterminate {
-                                        background-color: #3368C4 !important;
-                                        border-color: #3368C4 !important;
-                                        box-shadow: 0 2px 4px 0 rgba(13, 110, 253, 0.4);
-                                        /* box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4); */
-                                    }
-
-                                    .form-check-input[type=radio] {
-                                        z-index: 999;
-                                    }
-                                </style>
                             </div>
-                            <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0">
+
+                            <hr class="my-5 d-md-none">
+
+                            <div style="max-width: 400px !important;" class="d-flex flex-column-reverse order-0 mt-4 mt-lg-0">
                                 <div class="mb-4">
-                                    <button id="capture" class="btn btn-success mt-2 w-100" onclick="capture()" disabled>Ambil Gambar</button>
+                                    <button id="capture" class="btn btn-primary mt-2 w-100" onclick="startCountdown()" disabled>Ambil Gambar</button>
                                     <div class="d-flex gap-2 mt-2">
-                                        <button class="btn btn-primary w-50" id="start-camera">Mulai Kamera</button>
-                                        <button class="btn btn-danger w-50" id="stop-camera" disabled>Matikan Kamera</button>
+                                        <button class="btn btn-outline-primary w-50" id="start-camera">Mulai Kamera</button>
+                                        <button class="btn btn-outline-primary w-50" id="stop-camera" disabled>Matikan Kamera</button>
                                     </div>
                                 </div>
-                                <div>
-                                    <img class="mb-2" id="preview-image" src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}" alt="" style="width: 400px; height: 300px; object-fit: cover; border-radius: 8px !important;">
+                                <div style="position: relative;">
+                                    <!-- Prediction result positioned at top-left of video -->
+                                    <p id="prediction-result"
+                                       class="bg-secondary-subtle m-0 px-3 py-2 d-inline-block rounded"
+                                       style="position: absolute; top: 10px; left: 10px; z-index: 2; max-width: 90%; display: inline-block; pointer-events: none;">
+                                        Prediksi akan muncul di sini...
+                                    </p>
+                                    <img class="mb-2 w-100" id="preview-image"
+                                        src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}"
+                                        alt=""
+                                        style="object-fit: contain; border-radius: 8px !important; transform: scaleX(-1); background-color: #a0bbec30;">
                                     <video id="webcam" width="400px" height="300px" autoplay style="display:none; border-radius: 8px !important; object-fit: cover;" class="mb-2"></video>
-                                    <canvas id="canvas" width="350px" style="display:none;"></canvas>
+                                    <canvas class="d-none" id="canvas" width="400px" height="300px"></canvas>
                                     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
                                 </div>
                             </div>
@@ -98,5 +104,65 @@
     <!-- / Content -->
     <div class="content-backdrop fade"></div>
 </div>
+
+<script>
+document.getElementById('next-btn').addEventListener('click', function () {
+    const soalId = parseInt(this.dataset.id); // Ambil ID soal saat ini
+    const totalSoal = parseInt(this.dataset.total); // Ambil total jumlah soal
+    const soalHuruf = document.getElementById('soal-huruf').dataset.soal.trim().toUpperCase(); // Ambil soal_huruf
+    const predictionRaw = document.getElementById('prediction-result').textContent.trim().toUpperCase();
+    const jawaban = predictionRaw.replace("PREDIKSI: ", "").trim(); // Ambil prediksi
+
+    // Periksa apakah prediksi sudah dilakukan
+    if (jawaban === "" || jawaban === "PREDIKSI AKAN MUNCUL DI SINI...") {
+        alert("Silakan lakukan prediksi terlebih dahulu sebelum melanjutkan!");
+        return;
+    }
+
+    const isTrue = (soalHuruf === jawaban) ? 1 : 0; // Tentukan isTrue
+
+    // Kirim data ke server
+    fetch('/submit-jawaban-interaktif', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: soalId,
+            soal: "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+            soal_huruf: soalHuruf,
+            jawaban: jawaban,
+            isTrue: isTrue
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'ok') {
+            // Jika soal terakhir, arahkan ke halaman skor
+            if (soalId < totalSoal) {
+                window.location.href = `/kuis-interaktif/${soalId + 1}`;
+            } else {
+                window.location.href = `/skor`;
+            }
+        } else {
+            alert('Gagal menyimpan jawaban!');
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err);
+        alert('Terjadi error saat mengirim data!');
+    });
+});
+
+document.getElementById('back-btn').addEventListener('click', function () {
+    const soalId = parseInt(this.dataset.id); // Ambil ID soal saat ini
+
+    // Periksa apakah ini bukan soal pertama
+    if (soalId > 1) {
+        // Arahkan ke soal sebelumnya
+        window.location.href = `/kuis-interaktif/${soalId - 1}`;
+    }
+});
+</script>
 <!-- Content wrapper -->
 {% endblock content %}

@@ -1,0 +1,28 @@
+
+[
+    {
+        "id": 1,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "F"
+    },
+    {
+        "id": 2,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "C"
+    },
+    {
+        "id": 3,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "L"
+    },
+    {
+        "id": 4,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "Q"
+    },
+    {
+        "id": 5,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "X"
+    }
+]
