@@ -1,6 +1,18 @@
 {% extends "layouts/main.html" %}
 
 {% block content %}
+<style>
+    #preview-image {
+        height: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        #preview-image {
+            width: 400px !important;
+            height: 300px;
+        }
+    }
+</style>
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -75,9 +87,9 @@
                                         Prediksi akan muncul di sini...
                                     </p>
                                     <img class="mb-2 w-100" id="preview-image"
-                                        src="{{ url_for('static', filename='assets/img/backgrounds/18.jpg') }}"
+                                        src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}"
                                         alt=""
-                                        style="height: auto; object-fit: cover; border-radius: 8px !important;">
+                                        style="object-fit: contain; border-radius: 8px !important; transform: scaleX(-1); background-color: #a0bbec30;">
                                     <video id="webcam" width="400px" height="300px" autoplay style="display:none; border-radius: 8px !important; object-fit: cover;" class="mb-2"></video>
                                     <canvas class="d-none" id="canvas" width="400px" height="300px"></canvas>
                                     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
