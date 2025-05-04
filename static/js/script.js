@@ -53,11 +53,23 @@ function capture() {
     .then(data => {
         if (data.prediction) {
             document.getElementById("prediction-result").innerText = "Prediksi: " + data.prediction;
+
+            // Perbarui elemen prediction-accuracy jika akurasi tersedia
+            if (data.accuracy !== null && !isNaN(data.accuracy)) {
+                document.getElementById("prediction-accuracy").innerText = (data.accuracy * 100).toFixed(2) + "%";
+            } else {
+                document.getElementById("prediction-accuracy").innerText = "Akurasi tidak tersedia";
+            }
         } else {
             document.getElementById("prediction-result").innerText = "Error: " + (data.error || "Gagal memproses");
+            document.getElementById("prediction-accuracy").innerText = ""; // Kosongkan akurasi jika terjadi error
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById("prediction-result").innerText = "Error: Gagal mengirim data";
+        document.getElementById("prediction-accuracy").innerText = ""; // Kosongkan akurasi jika terjadi error
+    });
 }
 
 const startBtn = document.getElementById('start-camera');

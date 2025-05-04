@@ -135,10 +135,30 @@ def kuis_interaktif_detail(kuis_id):
 
 @app.route('/skor')
 def skor():
+    # Baca data dari file JSON
+    try:
+        with open('data-pg-jawaban.json') as f:
+            data_pg_jawaban = json.load(f)
+    except FileNotFoundError:
+        data_pg_jawaban = []
+
+    try:
+        with open('data-interaktif-jawaban.json') as f:
+            data_interaktif_jawaban = json.load(f)
+    except FileNotFoundError:
+        data_interaktif_jawaban = []
+
+    # Kirim data ke template
+    # Sorting berdasarkan id secara ascending (ASC)
+    data_pg_jawaban = sorted(data_pg_jawaban, key=lambda x: x.get('id', 0))
+    data_interaktif_jawaban = sorted(data_interaktif_jawaban, key=lambda x: x.get('id', 0))
+
     return render_template(
         'skor.html',
         title = 'Skor & Progress',
-        active = 'skor'
+        active = 'skor',
+        data_pg_jawaban = data_pg_jawaban,
+        data_interaktif_jawaban = data_interaktif_jawaban,
     )
     
 @app.route('/kamus-isyarat', endpoint='kamus-isyarat')
@@ -199,7 +219,15 @@ def predict():
         # Konversi hasil prediksi ke huruf
         predicted_character = labels_dict[int(prediction[0])] if isinstance(prediction[0], (int, np.integer)) else prediction[0]
 
-        return jsonify({'prediction': predicted_character})
+        # Dapatkan probabilitas prediksi jika model mendukung predict_proba
+        if hasattr(model, "predict_proba"):
+            proba = model.predict_proba([np.asarray(data_aux)])
+            accuracy = float(np.max(proba))  # Probabilitas tertinggi
+        else:
+            accuracy = 1.0  # Asumsikan prediksi 100% jika tidak tersedia proba
+
+        return jsonify({'prediction': predicted_character, 'accuracy': accuracy})
+        # return jsonify({'prediction': predicted_character})
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500

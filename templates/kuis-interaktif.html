@@ -6,7 +6,8 @@
         height: auto;
     }
 
-    #webcam {
+    #webcam,
+    #soal-huruf {
         width: 100%;
     }
 
@@ -15,6 +16,10 @@
         #webcam {
             width: 400px !important;
             height: 300px;
+        }
+
+        #soal-huruf {
+            width: 200px;
         }
     }
 </style>
@@ -30,7 +35,7 @@
                         <div class="d-md-flex justify-content-between align-items-start gap-4">                            
                             <div class="flex-grow-1">
                                 <h4 class="card-title my-4 lh-lg">{{ kuis.soal }}</h4>
-                                <p data-soal="{{ kuis.soal_huruf }}" id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; width: 200px;border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
+                                <p data-soal="{{ kuis.soal_huruf }}" id="soal-huruf" class="mb-4 rounded soal-huruf" style="font-size: 128px; border: 2px solid #dee2e6; text-align: center;">{{ kuis.soal_huruf }}</p>
                                 <script>
                                 function updateSoalHurufColor() {
                                     const predictionRaw = document.getElementById('prediction-result').textContent.trim().toUpperCase();
@@ -86,11 +91,18 @@
                                 </div>
                                 <div style="position: relative;">
                                     <!-- Prediction result positioned at top-left of video -->
-                                    <p id="prediction-result"
-                                       class="bg-secondary-subtle m-0 px-3 py-2 d-inline-block rounded"
-                                       style="position: absolute; top: 10px; left: 10px; z-index: 2; max-width: 90%; display: inline-block; pointer-events: none; z-index: 1000;">
-                                        Prediksi akan muncul di sini...
-                                    </p>
+                                    <div style="position: absolute; top: 10px; left: 10px; z-index: 1000; display: flex; gap: 10px; max-width: 90%; pointer-events: none;">
+                                        <p id="prediction-result"
+                                           class="bg-secondary-subtle m-0 px-3 py-2 d-inline-block rounded"
+                                           style="margin-bottom: 0;">
+                                           Prediksi akan muncul di sini...
+                                        </p>
+                                        <p id="prediction-accuracy"
+                                           class="bg-secondary-subtle m-0 px-3 py-2 d-inline-block rounded"
+                                           style="margin-bottom: 0;">
+                                           0%
+                                        </p>
+                                    </div>
                                     <img class="mb-2 w-100" id="preview-image"
                                         src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}"
                                         alt=""
