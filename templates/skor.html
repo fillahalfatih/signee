@@ -12,10 +12,6 @@
 {% set skor_pg = ((data_pg_jawaban | sum(attribute='isTrue')) / (data_pg_jawaban | length) * 100 | round(0, 'floor')) %}
 {% set skor_interaktif = "%0.0f" % ((data_interaktif_jawaban | sum(attribute='isTrue')) / (data_interaktif_jawaban | length) * 100 if (data_interaktif_jawaban | length) > 0 else 0 ) %}
 
-<script>
-    console.log("{{ skor_pg }} dan {{ skor }}")
-</script>
-
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y pb-0">
