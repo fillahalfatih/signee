@@ -5,36 +5,79 @@
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-lg-12 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                <div class="col-sm-7">
-                    <div class="card-body">
-                    <h5 class="card-title text-primary">{{ title }}</h5>
-                    <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quod nihil necessitatibus error nostrum magnam!
-                    </p>
-        
-                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+            <div class="col-lg-8 mb-4 order-1 order-md-0 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="d-flex align-items-center row p-lg-4 h-100">
+                        <div class="card-body"> 
+                            <h4 class="card-title lh-lg">Selamat Datang di <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Signee!</b></h4>
+                            <p class="card-title lh-lg mb-4">  Pelajari dasar-dasar <b>Bahasa Isyarat SIBI</b> secara menyenangkan dan interaktif! Mulailah dari materi-materi penting, lalu uji pemahamanmu dengan <u>kuis seru</u> yang telah kami sediakan. Klik tombol di bawah untuk segera memulai perjalanan belajarmu!</p>
+                            <a href="{{ url_for('pengantar') }}" class="btn btn-sm btn-primary py-2 px-3">Mulai Belajar</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-5 text-center text-sm-left">
-                    <div class="card-body pb-0 px-0 px-md-4">
-                    <img
-                        src="{{ url_for('static', filename='assets/img/illustrations/man-with-laptop-light.png') }}"
-                        height="140"
-                        alt="View Badge User"
-                        data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                        data-app-light-img="illustrations/man-with-laptop-light.png" />
-                    </div>
-                </div>
                 </div>
             </div>
+            <div class="col-lg-4 mb-4 order-0 order-md-1 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="row p-lg-4 h-100">
+                        <div class="card-body d-flex justify-content-center align-items-center py-4 py-lg-0 h-100">
+                            <img src="{{ url_for('static', filename='assets/img/illustrations/hero.png') }}" height="200"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 mb-4 order-1 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="d-md-flex align-items-center p-lg-4 h-100">
+                        <div class="card-body order-1"> 
+                            <h4 class="card-title lh-lg">Mari Mengenal <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Signee!</b></h4>
+                            <p class="card-title lh-lg mb-4">Website inovasi terbaru dalam dunia pembelajaran bahasa isyarat SIBI. Dengan elemen kuis interaktif, yang dapat memberikan pengalaman belajar yang lebih menyenangkan.</p>
+                        </div>
+                        <div class="card-body order-0 d-flex justify-content-center align-items-center py-4 py-lg-0 h-100">
+                            <img class="p-5" src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}" height="410"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 mb-4 order-1 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="d-md-flex align-items-center p-lg-4 h-100">
+                        <div class="card-body order-1"> 
+                            <h4 class="card-title lh-lg text-center">Fitur Unggulan <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Signee!</b></h4>
+                            <p class="card-title lh-lg mb-4 text-center">Website ini dirancang untuk memberikan pengalaman belajar bahasa isyarat dengan menarik.</p>
+
+                            <div class="d-flex gap-5">
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30;">
+                                    <p style="font-size: 50px;">✍️</p>
+                                    <h5 class="card-title">Belajar SIBI</h5>
+                                    <p class="card-text">Pembelajaran yang tidak hanya mudah, tapi juga seru dan partisipatif!</p>
+                                </div>
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30;">
+                                    <p style="font-size: 50px;">📝</p>
+                                    <h5 class="card-title">Kuis Interaktif</h5>
+                                    <p class="card-text">Latih kemampuanmu dengan kuis interaktif yang mengedukasi.</p>
+                                </div>
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30;">
+                                    <p style="font-size: 50px;">👀</p>
+                                    <h5 class="card-title">Deteksi SIBI</h5>
+                                    <p class="card-text">Menggunakan teknologi Computer Vision untuk deteksi SIBI.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <!-- / Content -->
     <div class="content-backdrop fade"></div>
 </div>
+
 <!-- Content wrapper -->
 {% endblock content %}

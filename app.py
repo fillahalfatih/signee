@@ -161,13 +161,6 @@ def skor():
         data_interaktif_jawaban = data_interaktif_jawaban,
     )
     
-@app.route('/kamus-isyarat', endpoint='kamus-isyarat')
-def kamus_isyarat():
-    return render_template(
-        'kamus-isyarat.html',
-        title = 'Kamus Isyarat',
-        active = 'kamus-isyarat'
-    )
 
 @app.route('/tentang')
 def tentang():

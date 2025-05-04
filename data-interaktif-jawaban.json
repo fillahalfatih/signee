@@ -1,24 +1,10 @@
 [
     {
-        "id": 4,
-        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
-        "soal_huruf": "Q",
-        "jawaban": "Q",
-        "isTrue": 1
-    },
-    {
-        "id": 5,
-        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
-        "soal_huruf": "X",
-        "jawaban": "X",
-        "isTrue": 1
-    },
-    {
         "id": 2,
         "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
         "soal_huruf": "C",
-        "jawaban": "C",
-        "isTrue": 1
+        "jawaban": "O",
+        "isTrue": 0
     },
     {
         "id": 3,
@@ -28,10 +14,24 @@
         "isTrue": 1
     },
     {
+        "id": 4,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "Q",
+        "jawaban": "X",
+        "isTrue": 0
+    },
+    {
+        "id": 5,
+        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
+        "soal_huruf": "X",
+        "jawaban": "X",
+        "isTrue": 1
+    },
+    {
         "id": 1,
         "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
         "soal_huruf": "F",
-        "jawaban": "C",
-        "isTrue": 0
+        "jawaban": "F",
+        "isTrue": 1
     }
 ]
