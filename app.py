@@ -20,7 +20,7 @@ labels_dict = {i: class_labels[i] for i in range(len(class_labels))}
 
 # Inisialisasi MediaPipe Hands
 mp_hands = mp.solutions.hands
-hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
+hands = mp_hands.Hands(static_image_mode=False, min_detection_confidence=0.3)
 
 @app.route('/')
 def index():
