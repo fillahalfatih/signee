@@ -30,29 +30,12 @@
         <div class="row">
             <div class="col-12 mb-4 d-flex align-items-stretch">
                 <div class="card w-100">
-                    <div class="d-flex flex-column flex-md-row align-items-center p-4">
-                        <div class="card-body order-1 text-center text-md-start ms-lg-4"> 
-                            <h4 class="card-title lh-lg">Mari Mengenal <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Signee!</b></h4>
-                            <p class="card-title lh-lg mb-4">Website inovasi terbaru dalam dunia pembelajaran bahasa isyarat SIBI. Dengan elemen kuis interaktif, yang dapat memberikan pengalaman belajar yang lebih menyenangkan.</p>
-                        </div>
-                        <div class="card-body order-0 d-flex justify-content-center align-items-center py-4 py-lg-0">
-                            <img class="img-fluid p-3" src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}" style="max-width: 410px;" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="row">
-            <div class="col-12 mb-4 d-flex align-items-stretch">
-                <div class="card w-100">
                     <div class="p-4">
                         <div class="card-body text-center"> 
                             <h4 class="card-title lh-lg">Fitur Unggulan <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Signee!</b></h4>
                             <p class="card-title lh-lg mb-4">Website ini dirancang untuk memberikan pengalaman belajar bahasa isyarat dengan menarik.</p>
                         </div>
-                        <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                        <div class="d-flex flex-column flex-md-row gap-4 justify-content-center mb-lg-4">
                             <div class="card-body text-center rounded" style="background-color: #a0bbec30;">
                                 <p style="font-size: 40px;">✍️</p>
                                 <h5 class="card-title">Belajar SIBI</h5>
@@ -69,6 +52,28 @@
                                 <p class="card-text">Menggunakan teknologi Computer Vision untuk deteksi SIBI.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="row">
+            <div class="col-12 col-lg-8 mb-4 order-1 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="d-flex flex-column justify-content-center p-lg-4 h-100">
+                        <div class="card-body text-md-start"> 
+                            <h4 class="card-title lh-lg">Mari Mengenal <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Signee!</b></h4>
+                            <p class="card-title lh-lg mb-4">Website inovasi terbaru dalam dunia pembelajaran bahasa isyarat SIBI. Dengan elemen kuis interaktif, yang dapat memberikan pengalaman belajar yang lebih menyenangkan.</p>
+                            <a href="{{ url_for('pengantar') }}" class="btn btn-sm btn-primary py-2 px-3">Mulai Belajar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 mb-4 order-0 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="p-4 d-flex justify-content-center align-items-center h-100">
+                        <img src="{{ url_for('static', filename='assets/img/illustrations/kuis-interaktif.png') }}" class="img-fluid" style="max-height: 200px;" />
                     </div>
                 </div>
             </div>
