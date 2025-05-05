@@ -39,10 +39,17 @@ def pengantar():
     
 @app.route('/alfabet')
 def alfabet():
+    try:
+        with open('data-alfabet.json') as f:
+            alfabet = json.load(f)
+    except FileNotFoundError:
+        alfabet = "Alfabet data not found"
+
     return render_template(
         'alfabet.html',
         title = 'Alfabet A-Z',
-        active = 'alfabet'
+        active = 'alfabet',
+        alfabet = alfabet
     )
     
 @app.route('/tips-trik', endpoint='tips-trik')

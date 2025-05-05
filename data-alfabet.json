@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "nama": "A",
+    "gambar": "assets/img/soal-pg/A.png",
+    "deskripsi": "Kepalkan tangan, ibu jari menempel di samping telunjuk."
+  },
+  {
+    "id": 2,
+    "nama": "B",
+    "gambar": "assets/img/soal-pg/B.png",
+    "deskripsi": "Tangan terbuka, jari-jari rapat dan lurus, ibu jari menempel di telapak."
+  },
+  {
+    "id": 3,
+    "nama": "C",
+    "gambar": "assets/img/soal-pg/C.png",
+    "deskripsi": "Bentuk tangan seperti huruf C."
+  },
+  {
+    "id": 4,
+    "nama": "D",
+    "gambar": "assets/img/soal-pg/D.png",
+    "deskripsi": "Telunjuk tegak, jari lain ditekuk, ibu jari menyentuh ujung jari tengah."
+  },
+  {
+    "id": 5,
+    "nama": "E",
+    "gambar": "assets/img/soal-pg/E.png",
+    "deskripsi": "Jari-jari ditekuk ke arah telapak, ibu jari di bawah jari lain."
+  },
+  {
+    "id": 6,
+    "nama": "F",
+    "gambar": "assets/img/soal-pg/F.png",
+    "deskripsi": "Ibu jari dan telunjuk membentuk lingkaran, jari lain tegak."
+  },
+  {
+    "id": 7,
+    "nama": "G",
+    "gambar": "assets/img/soal-pg/G.png",
+    "deskripsi": "Telunjuk dan ibu jari sejajar, jari lain ditekuk."
+  },
+  {
+    "id": 8,
+    "nama": "H",
+    "gambar": "assets/img/soal-pg/H.png",
+    "deskripsi": "Telunjuk dan jari tengah lurus, jari lain ditekuk, telapak menghadap ke samping."
+  },
+  {
+    "id": 9,
+    "nama": "I",
+    "gambar": "assets/img/soal-pg/I.png",
+    "deskripsi": "Jari kelingking tegak, jari lain ditekuk."
+  },
+  {
+    "id": 10,
+    "nama": "J",
+    "gambar": "assets/img/soal-pg/J.png",
+    "deskripsi": "Jari kelingking menggambar huruf J di udara."
+  },
+  {
+    "id": 11,
+    "nama": "K",
+    "gambar": "assets/img/soal-pg/K.png",
+    "deskripsi": "Telunjuk dan jari tengah membentuk huruf V, ibu jari di antara keduanya."
+  },
+  {
+    "id": 12,
+    "nama": "L",
+    "gambar": "assets/img/soal-pg/L.png",
+    "deskripsi": "Telunjuk dan ibu jari membentuk huruf L."
+  },
+  {
+    "id": 13,
+    "nama": "M",
+    "gambar": "assets/img/soal-pg/M.png",
+    "deskripsi": "Tiga jari (telunjuk, tengah, manis) menekuk di atas ibu jari."
+  },
+  {
+    "id": 14,
+    "nama": "N",
+    "gambar": "assets/img/soal-pg/N.png",
+    "deskripsi": "Dua jari (telunjuk dan tengah) menekuk di atas ibu jari."
+  },
+  {
+    "id": 15,
+    "nama": "O",
+    "gambar": "assets/img/soal-pg/O.png",
+    "deskripsi": "Semua jari membentuk lingkaran."
+  },
+  {
+    "id": 16,
+    "nama": "P",
+    "gambar": "assets/img/soal-pg/P.png",
+    "deskripsi": "Seperti K, tapi telapak menghadap ke bawah."
+  },
+  {
+    "id": 17,
+    "nama": "Q",
+    "gambar": "assets/img/soal-pg/Q.png",
+    "deskripsi": "Seperti G, tapi telapak menghadap ke bawah."
+  },
+  {
+    "id": 18,
+    "nama": "R",
+    "gambar": "assets/img/soal-pg/R.png",
+    "deskripsi": "Telunjuk dan jari tengah menyilang."
+  },
+  {
+    "id": 19,
+    "nama": "S",
+    "gambar": "assets/img/soal-pg/S.png",
+    "deskripsi": "Kepalkan tangan, ibu jari di depan jari-jari."
+  },
+  {
+    "id": 20,
+    "nama": "T",
+    "gambar": "assets/img/soal-pg/T.png",
+    "deskripsi": "Ibu jari di antara telunjuk dan jari tengah yang ditekuk."
+  },
+  {
+    "id": 21,
+    "nama": "U",
+    "gambar": "assets/img/soal-pg/U.png",
+    "deskripsi": "Telunjuk dan jari tengah lurus dan rapat."
+  },
+  {
+    "id": 22,
+    "nama": "V",
+    "gambar": "assets/img/soal-pg/V.png",
+    "deskripsi": "Telunjuk dan jari tengah membentuk huruf V."
+  },
+  {
+    "id": 23,
+    "nama": "W",
+    "gambar": "assets/img/soal-pg/W.png",
+    "deskripsi": "Tiga jari (telunjuk, tengah, manis) tegak dan rapat."
+  },
+  {
+    "id": 24,
+    "nama": "X",
+    "gambar": "assets/img/soal-pg/X.png",
+    "deskripsi": "Telunjuk ditekuk seperti kait."
+  },
+  {
+    "id": 25,
+    "nama": "Y",
+    "gambar": "assets/img/soal-pg/Y.png",
+    "deskripsi": "Ibu jari dan kelingking lurus, jari lain ditekuk."
+  },
+  {
+    "id": 26,
+    "nama": "Z",
+    "gambar": "assets/img/soal-pg/Z.png",
+    "deskripsi": "Telunjuk menggambar huruf Z di udara."
+  }
+]
