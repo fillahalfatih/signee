@@ -5,31 +5,37 @@
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-lg-12 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                <div class="col-sm-7">
-                    <div class="card-body">
-                    <h5 class="card-title text-primary">{{ title }}</h5>
-                    <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quod nihil necessitatibus error nostrum magnam!
-                    </p>
-        
-                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+            <div class="col-lg-12 mb-4 order-1 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="d-md-flex align-items-center p-lg-4 h-100">
+                        <div class="card-body order-1"> 
+                            <h4 class="card-title lh-lg text-center">Tips & Trik Belajar <b class="px-2 py-1 rounded" style="color: #3368C4; background-color: #a0bbec30;">Alfabet SIBI</b></h4>
+                            <p class="card-title lh-lg mb-4 text-center">Temukan berbagai tips praktis untuk membantu kamu belajar dan menghafal alfabet SIBI dengan lebih mudah dan menyenangkan.</p>
+                            <div class="d-flex gap-5 flex-wrap justify-content-center">
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30; width: 250px;">
+                                    <p style="font-size: 50px;">🔤</p>
+                                    <h5 class="card-title">Belajar Alfabet A–Z</h5>
+                                    <p class="card-text">Mulai dari huruf vokal seperti A, E, I, O, U. Ini huruf yang paling sering dipakai.</p>
+                                </div>
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30; width: 250px;">
+                                    <p style="font-size: 50px;">❓</p>
+                                    <h5 class="card-title">Kuis Pilihan Ganda</h5>
+                                    <p class="card-text">Jawab soal dan pilih huruf yang sesuai dengan bentuk tangan yang ditampilkan.</p>
+                                </div>
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30; width: 250px;">
+                                    <p style="font-size: 50px;">📷</p>
+                                    <h5 class="card-title">Kuis Interaktif</h5>
+                                    <p class="card-text">Gunakan webcam dan tunjukkan isyarat tangan untuk menjawab soal langsung.</p>
+                                </div>
+                                <div class="card-body text-center rounded" style="background-color: #a0bbec30; width: 250px;">
+                                    <p style="font-size: 50px;">⏱️</p>
+                                    <h5 class="card-title">Latihan Harian</h5>
+                                    <p class="card-text">Latihan 10–15 menit tiap hari bisa bantu kamu cepat hafal semua huruf.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-5 text-center text-sm-left">
-                    <div class="card-body pb-0 px-0 px-md-4">
-                    <img
-                        src="{{ url_for('static', filename='assets/img/illustrations/man-with-laptop-light.png') }}"
-                        height="140"
-                        alt="View Badge User"
-                        data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                        data-app-light-img="illustrations/man-with-laptop-light.png" />
-                    </div>
-                </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
