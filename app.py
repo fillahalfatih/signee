@@ -167,15 +167,6 @@ def skor():
         data_pg_jawaban = data_pg_jawaban,
         data_interaktif_jawaban = data_interaktif_jawaban,
     )
-    
-
-@app.route('/tentang')
-def tentang():
-    return render_template(
-        'tentang.html',
-        title = 'Tentang',
-        active = 'tentang'
-    )
 
 @app.route('/predict', methods=['POST'])
 def predict():

@@ -45,7 +45,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 
-    {% if active == 'beranda' or active == 'tentang' %}
+    {% if active == 'beranda' %}
     <style>
         .menu-link.menu-toggle.belajar,
         .menu-link.menu-toggle.latihan {
@@ -89,7 +89,7 @@
                         </a>
                     </li>
                     <!-- Dashboards -->
-                    <li class="menu-item {% if active == 'pengantar' or active == 'alfabet' or active == 'tips-trik' %}active open{% endif %} {% if active == 'beranda' or active == 'tentang' %} open {% endif %}">
+                    <li class="menu-item {% if active == 'pengantar' or active == 'alfabet' or active == 'tips-trik' %}active open{% endif %} {% if active == 'beranda' %} open {% endif %}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle belajar">
                             <i class="menu-icon tf-icons bx bx-book-content"></i>
                             <div data-i18n="Dashboards">Belajar</div>
@@ -114,7 +114,7 @@
                     </li>
 
                     <!-- Layouts -->
-                    <li class="menu-item {% if active == 'kuis-pilihan-ganda' or active == 'kuis-akhir' or active == 'kuis-interaktif' or active == 'skor' %}active open{% endif %} {% if active == 'beranda' or active == 'tentang' %} open {% endif %}">
+                    <li class="menu-item {% if active == 'kuis-pilihan-ganda' or active == 'kuis-akhir' or active == 'kuis-interaktif' or active == 'skor' %}active open{% endif %} {% if active == 'beranda' %} open {% endif %}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle latihan">
                             <i class="menu-icon tf-icons bx bx-edit"></i>
                             <div data-i18n="Layouts">Latihan</div>
@@ -136,12 +136,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="menu-item mt-auto {% if active == 'tentang' %} active {% endif %}">
-                        <a href="{{ url_for('tentang') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-info-circle"></i>
-                            <div data-i18n="Tentang">Tentang</div>
-                        </a>
                     </li>
                 </ul>
             </aside>
