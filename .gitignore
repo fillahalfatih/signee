@@ -1,7 +1,7 @@
 # Mengabaikan folder virtual environment
 venv/
 DATA/
-*.ipynb
+jupyter/
 
 # Mengabaikan file dan folder lain yang tidak perlu di commit
 __pycache__/
