@@ -21,17 +21,17 @@
         "isTrue": 1
     },
     {
-        "id": 1,
-        "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
-        "soal_huruf": "F",
-        "jawaban": "F",
-        "isTrue": 1
-    },
-    {
         "id": 2,
         "soal": "Peragakan bentuk tangan yang tepat untuk sesuai dengan standar bahasa isyarat untuk huruf",
         "soal_huruf": "C",
         "jawaban": "C",
+        "isTrue": 1
+    },
+    {
+        "id": 1,
+        "soal": "Peragakan bentuk tangan yang tepat dan sesuai dengan standar bahasa isyarat SIBI untuk huruf",
+        "soal_huruf": "F",
+        "jawaban": "F",
         "isTrue": 1
     }
 ]
