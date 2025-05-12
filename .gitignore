@@ -1,7 +1,10 @@
 # Mengabaikan folder virtual environment
 venv/
-DATA/
-jupyter/
+TEST/
+TRAIN/
+collect-data.ipynb
+create-dataset.ipynb
+inference-classifier.ipynb
 
 # Mengabaikan file dan folder lain yang tidak perlu di commit
 __pycache__/
