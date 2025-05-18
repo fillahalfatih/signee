@@ -2,7 +2,7 @@
 venv/
 TEST/
 TRAIN/
-model/
+model-tuning/
 
 collect-data.ipynb
 create-dataset.ipynb
