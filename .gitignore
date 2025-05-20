@@ -4,10 +4,6 @@ TEST/
 TRAIN/
 model-tuning/
 
-collect-data.ipynb
-create-dataset.ipynb
-inference-classifier.ipynb
-
 # Mengabaikan file dan folder lain yang tidak perlu di commit
 __pycache__/
 *.pyc
