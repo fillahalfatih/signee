@@ -22,4 +22,4 @@ __pycache__/
 # Mengabaikan file log dan cache
 logs/
 *.log
-cache/
+cache/model/rf_model_kfold_tn1_4.p
