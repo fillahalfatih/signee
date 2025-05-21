@@ -6,6 +6,7 @@ model-tuning/
 
 model/rf_model_kfold_tn1_4.p
 
+
 # Mengabaikan file dan folder lain yang tidak perlu di commit
 __pycache__/
 *.pyc
