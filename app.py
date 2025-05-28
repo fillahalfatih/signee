@@ -11,7 +11,7 @@ import os
 app = Flask(__name__)
 
 # Load model dari file .p
-model_dict = pickle.load(open('model/rf_model_kfold.p', 'rb'))
+model_dict = pickle.load(open('model-tuning/rf_model_kfold_1.p', 'rb'))
 model = model_dict['model']
 
 # Definisikan labels_dict untuk mapping label numerik ke huruf
